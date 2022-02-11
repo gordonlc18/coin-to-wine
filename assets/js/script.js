@@ -1,9 +1,32 @@
 $(function () {
+  var searchHistory;
+
   $("#rando-btn").on("click", function () {
-    getBitcoinPrice();
+    var product = $("#searchForProductInput").val().trim();
+
+    if (product) {
+      // Need to fetch the product information from api
+      // For now I will set price to ten thow wow but will need to get price from product info
+      getBitcoinPrice(10000);
+
+      // Will need this line later
+      // searchHistory.unshift({ product });
+      $("#searchForProductInput").val("");
+    } else {
+      alert("Please enter a product");
+    }
+
+    // Will comment this out for now
+    // saveSearchHistory();
+    // displaySearchHistory(product);
   });
 
-  function getBitcoinPrice() {
+  var formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
+
+  function getBitcoinPrice(price) {
     const settings = {
       async: true,
       crossDomain: true,
@@ -22,12 +45,39 @@ $(function () {
         return response.json();
       })
       .then(function (data) {
-        console.log(data.bitcoin.usd);
-        $("#bitcoin-Price").text(data.bitcoin.usd);
+        var bitcoinPrice = data.bitcoin.usd;
+        console.log(formatter.format(price / bitcoinPrice));
+        $("#bitcoin-Price").text(formatter.format(price / bitcoinPrice));
       });
   }
+
+  function saveSearchHistory() {
+    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+  }
+
+  function loadProductSearches() {
+    searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
+
+    // if nothing in localStorage, create a new object
+    if (!searchHistory) {
+      searchHistory = [];
+    }
+
+    // loop over object properties
+    $.each(searchHistory, function (index, product) {
+      displaySearchHistory(product);
+    });
+  }
+
+  function displaySearchHistory(product) {
+    // Need to append search history items to list here
+  }
+
+  // This line here will dynamically display past search history but I will comment out for now
+  //  loadProductSearches()
 });
 
+// Google shopping scraper only allows thirty requests per month for free!!!!
 // const settings = {
 // 	"async": true,
 // 	"crossDomain": true,
