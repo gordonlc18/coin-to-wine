@@ -6,10 +6,8 @@ $(function () {
 
     if (product) {
       // Need to fetch the product information from api
-      // For now I will set price to ten thow wow but will need to get price from product info
-      getBitcoinPrice(10000);
-
-      // Will need this line later
+      // For now I will set price to something random but will need to get price from product info
+      getBitcoinPrice(8.32);
       // searchHistory.unshift({ product });
       $("#searchForProductInput").val("");
     } else {
@@ -19,11 +17,6 @@ $(function () {
     // Will comment this out for now
     // saveSearchHistory();
     // displaySearchHistory(product);
-  });
-
-  var formatter = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "BTC",
   });
 
   function getBitcoinPrice(price) {
@@ -46,8 +39,8 @@ $(function () {
       })
       .then(function (data) {
         var bitcoinPrice = data.bitcoin.usd;
-        console.log(formatter.format(price / bitcoinPrice));
-        $("#bitcoin-Price").text(formatter.format(price / bitcoinPrice));
+        var newprice = price / bitcoinPrice;
+        $("#bitcoin-Price").text("BTC " + newprice.toFixed(10));
       });
   }
 
