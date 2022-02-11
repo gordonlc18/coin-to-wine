@@ -1,13 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="./assets/vendor/boxicons/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
+      integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css"
+    />
+    <link rel="stylesheet" href="./assets/vendor/bulma/css/bulma.min.css"/>
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Coin to Wine</title>
-</head>
-<body>
+  </head>
+  <body class="has-navbar-fixed-top">
+    <header>
+      <nav class="navbar is-transparent is-fixed-top has-shadow is-justify-content-center">
+        <h1 class="is-size-1 is-align-self-center">
+          <img
+          class=" ml-2 mt-3"
+          width="64" height="64"
+          src="./assets/img/bitcoin-logo.png"
+          alt="Bitcoin Logo"
+          />
+          <b>To Wine</b>
+        </h1>  
+      </nav>
+    </header>
+    <main>
+      <h1 class="Bitcoin Price"></h1>
+    </main>
+    <script src="./assets/vendor/jquery/jquery-3.6.0.min.js"></script>
+    <script src="./assets/vendor/moment/moment-with-locales.min.js"></script>
     <script src="./assets/js/script.js"></script>
-</body>
+  </body>
 </html>

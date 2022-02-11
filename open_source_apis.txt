@@ -1,0 +1,14 @@
+
+all of the free/freemium apis I found.com
+
+balwinescore.com/api/ - from what I can tell this api sucks not a ton of information
+
+https://coinmarketcap.com/api/pricing/
+https://api2.binance.com/api/v3/ticker/24hr
+https://api.coinbase.com/v2/currencies
+https://api.coindesk.com/v1/bpi/currentprice.json
+https://api.coingecko.com/api/v3/exchange_rates
+
+https://mixedanalytics.com/blog/list-actually-free-open-no-auth-needed-apis/
+https://rapidapi.com/yeptony-hwvrTFFax/api/beer-lover/ - closest thing I found?
+https://github.com/public-apis/public-apis
