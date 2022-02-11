@@ -1,5 +1,6 @@
 $(function () {
   var searchHistory;
+  var bitcoinPrice;
 
   $("#rando-btn").on("click", function () {
     var product = $("#searchForProductInput").val().trim();
@@ -7,7 +8,8 @@ $(function () {
     if (product) {
       // Need to fetch the product information from api
       // For now I will set price to something random but will need to get price from product info
-      getBitcoinPrice(8.32);
+
+      convertUSDTOBTC(8.32);
       // searchHistory.unshift({ product });
       $("#searchForProductInput").val("");
     } else {
@@ -19,7 +21,12 @@ $(function () {
     // displaySearchHistory(product);
   });
 
-  function getBitcoinPrice(price) {
+  function convertUSDTOBTC(price) {
+    var newprice = price / bitcoinPrice;
+    $("#bitcoin-Price").text("BTC " + newprice.toFixed(10));
+  }
+
+  function getBitcoinPrice() {
     const settings = {
       async: true,
       crossDomain: true,
@@ -38,9 +45,8 @@ $(function () {
         return response.json();
       })
       .then(function (data) {
-        var bitcoinPrice = data.bitcoin.usd;
-        var newprice = price / bitcoinPrice;
-        $("#bitcoin-Price").text("BTC " + newprice.toFixed(10));
+        bitcoinPrice = data.bitcoin.usd;
+        console.log(bitcoinPrice);
       });
   }
 
@@ -68,6 +74,7 @@ $(function () {
 
   // This line here will dynamically display past search history but I will comment out for now
   //  loadProductSearches()
+  getBitcoinPrice();
 });
 
 // Google shopping scraper only allows thirty requests per month for free!!!!
