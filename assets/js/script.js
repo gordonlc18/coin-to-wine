@@ -76,25 +76,3 @@ $(function () {
   //  loadProductSearches()
   getBitcoinPrice();
 });
-
-// Google shopping scraper only allows thirty requests per month for free!!!!
-// const settings = {
-// 	"async": true,
-// 	"crossDomain": true,
-// 	"url": "https://google-shopping-scraper.p.rapidapi.com/scrape",
-// 	"method": "POST",
-// 	"headers": {
-// 		"content-type": "application/json",
-// 		"x-rapidapi-host": "google-shopping-scraper.p.rapidapi.com",
-// 		"x-rapidapi-key": "b27e1aaebdmsh5e18b202a907fe1p1cc241jsn89e10075c08e"
-// 	},
-// 	"processData": false,
-// 	"data": {
-// 		"query": "iphone case",
-// 		"country": "us"
-// 	}
-// };
-
-// $.ajax(settings).done(function (response) {
-// 	console.log(response);
-// });
