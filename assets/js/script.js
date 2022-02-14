@@ -25,6 +25,28 @@ $(function () {
     $("#bitcoin-Price").text("BTC " + newprice.toFixed(10));
   }
 
+  function getProducts(product) {
+    const settings = {
+      async: true,
+      crossDomain: true,
+      method: "GET",
+      headers: {
+        "x-rapidapi-host": "",
+        "x-rapidapi-key": "",
+      },
+    };
+
+    var apiURL = "${product}";
+
+    fetch(apiURL, settings)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(data);
+      });
+  }
+
   function getBitcoinPrice() {
     const settings = {
       async: true,
