@@ -10,15 +10,14 @@ $(function () {
       // For now I will set price to something random but will need to get price from product info
 
       convertUSDTOBTC(8.32);
-      // searchHistory.unshift({ product });
+      searchHistory.unshift({ product });
       $("#searchForProductInput").val("");
     } else {
       alert("Please enter a product");
     }
 
-    // Will comment this out for now
-    // saveSearchHistory();
-    // displaySearchHistory(product);
+    saveSearchHistory();
+    displaySearchHistory(product);
   });
 
   function convertUSDTOBTC(price) {
@@ -64,15 +63,31 @@ $(function () {
 
     // loop over object properties
     $.each(searchHistory, function (index, product) {
-      displaySearchHistory(product);
+      displaySearchHistory(product.product);
     });
   }
 
   function displaySearchHistory(product) {
     // Need to append search history items to list here
+    var listItem = $("<li>").addClass("searches mb-3");
+    var div = $("<div>").addClass("");
+    var button = $("<button>")
+      .addClass(" button is-large is-responsive is-link")
+      .attr("type", "button")
+      .attr("name", product)
+      .text(product);
+
+    div.append(button);
+    listItem.append(div);
+
+    $("#list-SearchHistory").prepend(listItem);
   }
 
-  // This line here will dynamically display past search history but I will comment out for now
-  //  loadProductSearches()
+  // When the user clicks on a button in search history list fetch products from past search history(Make another api call)
+  $("#list-SearchHistory").on("click", "button", function () {
+    /*add code here!!!!!! */
+  });
+
+  loadProductSearches();
   getBitcoinPrice();
 });

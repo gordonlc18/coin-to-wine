@@ -8,7 +8,6 @@
       href="./assets/vendor/boxicons/css/boxicons.min.css"
       rel="stylesheet"
     />
-    <!-- Compiled and minified CSS -->
     <link
       rel="stylesheet"
       href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
@@ -36,9 +35,15 @@
           alt="Bitcoin Logo"
         />
         </h1>
+        <!-- <div>
+          <h2 class="subtitle">
+            Search for your favorite items to see how the USD price compares to <strong>Bitcoin</strong>!
+           </h2>
+        </div> -->
       </nav>
     </header>
     <main>
+      <!-- SEARCH BAR AND BUTTON -->
       <div class="container mt-5">
         <div class="ms-2">
           <h3><b>Search for a Product:</b/h3>
@@ -50,20 +55,32 @@
                     <option>With options</option>
                   </select>
                 </div>
-                <div>
-                  <input type="text" id="searchForProductInput">
+                <div class="level-items">
+                  <div class="field has-addons">
+                    <p class="control">
+                      <input id="searchForProductInput" class="input" type="text" placeholder="Search a product">
+                    </p>
+                    <p class="control">
+                      <button id="rando-btn" class="button is-info">Search</button>
+                    </p>
+                  </div>
                 </div>
-                <div class="mt-3 mb-3">
-                  <button id="rando-btn">Search</button>
-                </div>
-                <h1 id="bitcoin-Price"></h1>
+                  <h1 id="bitcoin-Price"></h1>
               </div>
             </div>
-            <hr/>
-            <ul id="list-SearchHistory" class="mt-4">
-              </ul>
-    
+        <hr/>
+        <ul id="list-SearchHistory" class="mt-4">
+        </ul>
+      </div>
     </main>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          Coding Brigaders © 2022 All Rights Reserved. 
+        </p>
+      </div>
+    </footer>
     <script src="./assets/vendor/jquery/jquery-3.6.0.min.js"></script>
     <script src="./assets/vendor/moment/moment-with-locales.min.js"></script>
     <script src="./assets/js/script.js"></script>
