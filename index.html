@@ -30,13 +30,12 @@
        <!-- HIDE UNTIL RESULTS PAGE.  -->
        <!-- SAVE TO LOCAL STORAGE ?????????????? -->
        <!-- This button may not be necessary -->
-       <div class="is-hidden">
+      
                 <div class="level-right mt-3">
         <p class="level-item">
-      <button id="addToFavBtn" class="button is-primary is-focused">Favorites</button>
+      <button id="addToFavBtn" class="button is-primary is-focused is-hidden">Favorites</button>
         </p>
       </div>
-    </div>
 
 
        <!-- LOGO AND TAGLINE/SECTION LAYOUT -->
@@ -57,7 +56,7 @@
           </div>
           </section>
          
-   
+
     <!-- <main> -->
       <!-- <div class="container mt-5">
         <div class="ms-2">
@@ -70,7 +69,6 @@
                     <option>With options</option>
                   </select>
                 </div> -->
-
 
                 <!-- SEARCH BAR AND BUTTON -->
                 
@@ -90,10 +88,37 @@
           </div>
           </div>
           <!-- Results from search -->
-          <div id="results"></div>
+          <!-- CARDS WILL BE VISIBLE AFTER SEARCH BUTTON CLICK -->
+          <div id="results"class="card is-hidden">
+              <div class="card-image">
+                <figure class="image is-4by3">
+                  <img src="https://versions.bulma.io/0.7.2/images/placeholders/1280x960.png" alt="Placeholder image">
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-left">
+                    <figure class="image is-48x48">
+                      <img src="https://versions.bulma.io/0.7.2/images/placeholders/96x96.png" alt="Placeholder image">
+                    </figure>
+                  </div>
+                  <div class="media-content">
+                    <p class="title is-4">John Smith</p>
+                    <p class="subtitle is-6">@johnsmith</p>
+                  </div>
+                </div>
+            
+                <div class="content">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                  <a href="#">#css</a> <a href="#">#responsive</a>
+                  <br>
+        
+                </div>
+              </div>
+            </div>
           <!-- SEARCH HISTORY WILL BE SAVED IN LOCAL STORAGE  -->
          
-      
 
                 <h1 id="bitcoin-Price"></h1>
               </div>

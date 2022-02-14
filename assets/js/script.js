@@ -12,7 +12,7 @@ $(function () {
   
     $("#rando-btn").on("click", function () {
       var product = $("#searchForProductInput").val().trim();
- 
+
  
       // Display cards with results
   searchbtn.addEventListener('click', () => {
@@ -39,7 +39,13 @@ $(function () {
     })
 
 })
-
+//  FUNCTION WILL HIDE SEARCH BAR WHEN RESULTS ARE SHOWN
+function displayCards(){
+  searchForProductInputEl.style.dispay = "none";
+  resultsEl.style.dispay ="block";
+}
+// Event listener to show favorite button on results page
+rando-btn.addEventListener("click", displayCards);
 
       if (product) {
         // Need to fetch the product information from api
