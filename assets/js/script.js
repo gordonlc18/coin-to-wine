@@ -72,7 +72,7 @@ $(function () {
     var listItem = $("<li>").addClass("searches mb-3");
     var div = $("<div>").addClass("");
     var button = $("<button>")
-      .addClass(" button is-large is-responsive is-link")
+      .addClass(" button is-large is-responsive is-link is-rounded")
       .attr("type", "button")
       .attr("name", product)
       .text(product);
