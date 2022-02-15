@@ -90,30 +90,34 @@ const setting = {
 	}
 };
 
-var walmart_product = "soap";
+var inputText=document.getElementById("searchForProductInput").value;
+console.log(inputText);
+
+var walmart_product = inputText;
 
 
 
-var apiUrl = "https://axesso-walmart-data-service.p.rapidapi.com/wlm/walmart-search-by-keyword?keyword=" + walmart_product + "&page=1&type=text&sortBy=best_match";
-fetch(apiUrl, setting)
-    .then(function(response) {
-        if (response.ok) {
-            response.json().then(function(data) {
-                var test = data.item.props.pageProps.initialData.searchResult.itemStacks[0];
-                for (var i = 0; i < test.items.length; i++) {
-                    var test2 = test.items[i].price;
-                    var test3 = test.items[i].name;
-                    console.log("price: " + test2 + ", name: " + test3);
-                }
-                console.log(data.item.props.pageProps.initialData.searchResult.itemStacks[0]);    
-            });
-        } else {
-            alert("Error: " + response.statusText)
-        }
-    })
-    .catch(function(error) {
-        alert("Unable to connect to Google Auth");
-    });
+
+// var apiUrl = "https://axesso-walmart-data-service.p.rapidapi.com/wlm/walmart-search-by-keyword?keyword=" + walmart_product + "&page=1&type=text&sortBy=best_match";
+// fetch(apiUrl, setting)
+//     .then(function(response) {
+//         if (response.ok) {
+//             response.json().then(function(data) {
+//                 var test = data.item.props.pageProps.initialData.searchResult.itemStacks[0];
+//                 for (var i = 0; i < test.items.length; i++) {
+//                     var test2 = test.items[i].price;
+//                     var test3 = test.items[i].name;
+//                     console.log("price: " + test2 + ", name: " + test3);
+//                 }
+//                 console.log(data.item.props.pageProps.initialData.searchResult.itemStacks[0]);    
+//             });
+//         } else {
+//             alert("Error: " + response.statusText)
+//         }
+//     })
+//     .catch(function(error) {
+//         alert("Unable to connect to Google Auth");
+//     });
                 
 
 // $.ajax(setting).done(function (response) {
