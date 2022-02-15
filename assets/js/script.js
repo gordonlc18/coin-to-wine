@@ -14,11 +14,20 @@ $(function () {
       displaySearchHistory(product);
       $("#searchForProductInput").val("");
     } else {
-      alert("Please enter a product");
+      showModalError("Please enter a product!");
     }
 
     saveSearchHistory();
   });
+
+  $(".modal-close").on("click", function () {
+    $(".modal").removeClass("is-active");
+  });
+
+  function showModalError(msg) {
+    $("#error-content p").text(msg);
+    $("#modal-error").addClass("is-active");
+  }
 
   function convertUSDTOBTC(price) {
     var newprice = price / bitcoinPrice;

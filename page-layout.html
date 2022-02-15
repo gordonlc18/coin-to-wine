@@ -30,9 +30,59 @@
     }
       .product-gallery {
         grid-area: gallery;
-        background-color: aquamarine;
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(241, 237, 237);
       }
-
+      .product-cards-container {
+        margin: 0 !important;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap;
+        --bs-gutter-x: 1.5rem;
+        --bs-gutter-y: 0;
+      }
+      
+      .product-cards-container > * {
+        flex-shrink: 0;
+        width: 100%;
+        max-width: 100%;
+        padding-right: calc(var(--bs-gutter-x) * .5);
+        padding-left: calc(var(--bs-gutter-x) * .5);
+        margin-top: var(--bs-gutter-y);
+      }
+      
+      .card-item {
+        /* background: gold; */
+        line-height: 100px;
+        color: white;
+        font-weight: bold;
+        font-size: 2em;
+        text-align: center;
+        flex: 0 0 auto;
+      }
+      
+      @media (min-width: 768px) {
+          /* For desktop: */
+          .col-1 {width: 8.33%;}
+          .col-2 {width: 16.66%;}
+          .col-3 {width: 25%;}
+          .col-4 {width: 33.33%;}
+          .col-5 {width: 41.66%;}
+          .col-6 {width: 50%;}
+          .col-7 {width: 58.33%;}
+          .col-8 {width: 66.66%;}
+          .col-9 {width: 75%;}
+          .col-10 {width: 83.33%;}
+          .col-11 {width: 91.66%;}
+          .col-12 {width: 100%;}
+      }
+      
       .grid-container {
         display: grid;
         grid-template-areas: "search gallery gallery gallery gallery gallery";
@@ -59,7 +109,7 @@
     <header>
       <nav class="navbar is-transparent has-shadow">
         <div class="title">
-          <h1 class="is-size-1">
+          <h1 class="is-size-1 is-size-3-mobile">
             <b>Shop With</b>
             <img
               class="ml-2 mt-3"
@@ -71,7 +121,7 @@
           </h1>
         </div>
         <div class="subtitle">
-          <h2>
+          <h2 class="is-size-7-mobile">
             Search for your favorite items to see how the USD price compares to
             <strong>Bitcoin</strong>!
           </h2>
@@ -84,7 +134,7 @@
         <!-- Search For a Product-->
         <div class="search-container">
             <div>
-                <h3><b>Search for a Product:</b/h3>
+              <p class="is-size-4 is-size-6-mobile"><b>Search for a Product:</b/><p>
             </div>
             <div>
                 <div class="select mb-3">
@@ -104,12 +154,23 @@
                   </p>
                 </div>
             </div>
-            <h1 id="bitcoin-Price"></h1>
+            <p id="bitcoin-Price"></p>
             <ul id="list-SearchHistory">
             </ul>
         </div>
         <!--- This will be the gallery for the different products--->
-        <div class="product-gallery">Product Gallery</div>
+        <div class="product-gallery">
+          <div class="has-text-centered">
+            <p class="is-size-4 is-size-6-mobile mt-5"><b>Product Gallery</b></p>
+            <hr/>
+          </div>
+          <div class="product-cards-container">
+            <div class="card-item col-4 mb-1">1</div>
+            <div class="card-item col-4 mb-1">2</div>
+            <div class="card-item col-4 mb-1">3</div>
+            <div class="card-item col-4 mb-1">4</div>
+          </div>
+        </div>
       </div>
     </main>
     <!-- Footer -->
