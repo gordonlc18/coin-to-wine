@@ -11,13 +11,13 @@ $(function () {
 
       convertUSDTOBTC(8.32);
       searchHistory.unshift({ product });
+      displaySearchHistory(product);
       $("#searchForProductInput").val("");
     } else {
       alert("Please enter a product");
     }
 
     saveSearchHistory();
-    displaySearchHistory(product);
   });
 
   function convertUSDTOBTC(price) {
@@ -94,7 +94,7 @@ $(function () {
     var listItem = $("<li>").addClass("searches mb-3");
     var div = $("<div>").addClass("");
     var button = $("<button>")
-      .addClass(" button is-large is-responsive is-link is-rounded")
+      .addClass(" button is-responsive is-link has-text-weight-bold")
       .attr("type", "button")
       .attr("name", product)
       .text(product);

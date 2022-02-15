@@ -21,6 +21,38 @@
     <link rel="stylesheet" href="./assets/vendor/bulma/css/bulma.min.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Shop With Bitcoin</title>
+    <style>
+      .search-container {
+        grid-area: search;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;      
+    }
+      .product-gallery {
+        grid-area: gallery;
+        background-color: aquamarine;
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-areas: "search gallery gallery gallery gallery gallery";
+        grid-gap: 10px;
+        padding: 15px;
+      }
+      .navbar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .footer{
+          background-color: rgb(241, 237, 237);
+      }
+      
+      .searches button{
+          width: 50%;
+          font-size: 75%;
+      }
+    </style>
   </head>
   <body>
     <!-- Page Header -->
