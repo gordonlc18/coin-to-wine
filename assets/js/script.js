@@ -2,30 +2,84 @@ $(function () {
   var searchHistory;
   var bitcoinPrice;
 
+  //How it all got started
   $("#rando-btn").on("click", function () {
     var product = $("#searchForProductInput").val().trim();
-
     if (product) {
-      // Need to fetch the product information from api
-      // For now I will set price to something random but will need to get price from product info
-
-      convertUSDTOBTC(8.32);
-      // searchHistory.unshift({ product });
+      getProducts(product);
       $("#searchForProductInput").val("");
     } else {
-      alert("Please enter a product");
+      showModalError("Please enter a product!");
     }
-
-    // Will comment this out for now
-    // saveSearchHistory();
-    // displaySearchHistory(product);
   });
 
-  function convertUSDTOBTC(price) {
-    var newprice = price / bitcoinPrice;
-    $("#bitcoin-Price").text("BTC " + newprice.toFixed(10));
+  //Close the modal window
+  $(".modal-close").on("click", function () {
+    $(".modal").removeClass("is-active");
+  });
+
+  //Showing Modal instead of alert and dynamically populating error message
+  function showModalError(msg) {
+    $("#error-content p").text(msg);
+    $("#modal-error").addClass("is-active");
   }
 
+  //Function for converting us price to bitcoin
+  function convertUSDTOBTC(price) {
+    var newprice = price / bitcoinPrice;
+    return newprice.toFixed(10);
+  }
+
+  // Fetching the products from walmarts API
+  function getProducts(product) {
+    showSpinner();
+    const settings = {
+      async: true,
+      crossDomain: true,
+      method: "GET",
+      headers: {
+        "x-rapidapi-host": "axesso-walmart-data-service.p.rapidapi.com",
+        "x-rapidapi-key": "d8d2f7e79fmsh47084dabaa26026p1daedajsn3f84abdcfea8",
+      },
+    };
+
+    var apiURL = `https://axesso-walmart-data-service.p.rapidapi.com/wlm/walmart-search-by-keyword?keyword=${product}&page=1&type=text&sortBy=best_match`;
+
+    fetch(apiURL, settings).then(function (response) {
+      if (response.ok) {
+        emptyProductGallery();
+        hideSpinner();
+        searchHistory.unshift({ product });
+        saveSearchHistory();
+        emptySearchHistoryContainer();
+        loadProductSearches();
+        response.json().then(function (data) {
+          var products =
+            data.item.props.pageProps.initialData.searchResult.itemStacks[0];
+          if (products.items.length > 0) {
+            for (var i = 0; i < 8; i++) {
+              var price = products.items[i].price;
+              var item = products.items[i];
+              if (price > 0) {
+                displayProductCards(item);
+              }
+            }
+          } else {
+            searchHistory = arrayRemove(product);
+            saveSearchHistory();
+            emptySearchHistoryContainer();
+            loadProductSearches();
+            showModalError(`No Products found with the name ${product}`);
+          }
+        });
+      } else {
+        hideSpinner();
+        showModalError(response.statusText);
+      }
+    });
+  }
+
+  //Fetching the price of bitcoin from coingecko
   function getBitcoinPrice() {
     const settings = {
       async: true,
@@ -33,7 +87,7 @@ $(function () {
       method: "GET",
       headers: {
         "x-rapidapi-host": "coingecko.p.rapidapi.com",
-        "x-rapidapi-key": "b27e1aaebdmsh5e18b202a907fe1p1cc241jsn89e10075c08e",
+        "x-rapidapi-key": "4652da77a0msh7a2f0759d2e237dp1cf962jsn08149038d679",
       },
     };
 
@@ -46,11 +100,36 @@ $(function () {
       })
       .then(function (data) {
         bitcoinPrice = data.bitcoin.usd;
-        console.log(bitcoinPrice);
       });
   }
 
+  function uniq(a) {
+    let uniqMap = [];
+    let uniqueHistory = [];
+    a.forEach((c) => {
+      if (!uniqueHistory.includes(c.product)) {
+        uniqueHistory.push(c.product);
+      }
+    });
+    uniqueHistory.forEach((product) => {
+      uniqMap.unshift({ product });
+    });
+    return uniqMap;
+  }
+
+  // https://love2dev.com/blog/javascript-remove-from-array/
+  function arrayRemove(value) {
+    for (var i = 0; i < searchHistory.length; i++) {
+      var product = searchHistory[i].product;
+      if (value === product) {
+        searchHistory.splice(i, 1);
+      }
+    }
+    return searchHistory;
+  }
+
   function saveSearchHistory() {
+    searchHistory = uniq(searchHistory);
     localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
   }
 
@@ -64,62 +143,108 @@ $(function () {
 
     // loop over object properties
     $.each(searchHistory, function (index, product) {
-      displaySearchHistory(product);
+      displaySearchHistory(product.product);
     });
   }
 
+  // Create our number formatter.
+  var formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
+
+  // We will call this function to empty product gallery when searching for new products
+  function emptyProductGallery() {
+    $(".product-cards-container").empty();
+  }
+
+  //displaying product cards in the product gallery section
+  function displayProductCards(item) {
+    var price = formatter.format(item.price);
+    var image = item.image;
+    var name = item.name;
+    var BTC = convertUSDTOBTC(item.price);
+    console.log("Name: " + name);
+    console.log("Price: " + price);
+    console.log("Image: " + image);
+    console.log("BTC: " + BTC);
+    console.log(item);
+
+    var productCard = `
+    <div class="card-item col-4 mb-2">
+      <div class="card">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <img src=${image} alt="Product Image">
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="content is-size-6 is-size-7-mobile">
+            <p class="description">
+              <b>Product Description:</b> 
+              <span>
+                ${name}
+              </span>
+            </p>
+            <p class="price">
+              <b>USD Price:</b>
+              <span>
+                ${price}
+              </span>
+            </p>
+            <p class="btc">
+              <b>BTC:</b>
+              <span>
+                ${BTC}
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>`;
+
+    $(".product-cards-container").append(productCard);
+  }
+
+  //empty search history if no products are found
+  function emptySearchHistoryContainer() {
+    $("#list-SearchHistory").empty();
+  }
   function displaySearchHistory(product) {
-    // Need to append search history items to list here
+    // Append search history items to list here
+    var listItem = $("<li>").addClass("searches mb-3");
+    var div = $("<div>").addClass("");
+    var button = $("<button>")
+      .addClass(" button is-responsive is-link has-text-weight-bold")
+      .attr("type", "button")
+      .attr("name", product)
+      .text(product);
+
+    div.append(button);
+    listItem.append(div);
+
+    $("#list-SearchHistory").prepend(listItem);
   }
 
-  // This line here will dynamically display past search history but I will comment out for now
-  //  loadProductSearches()
+  // When the user clicks on a button in search history list fetch products from past search history(Make another api call)
+  $("#list-SearchHistory").on("click", "button", function () {
+    // get button name value attribute
+    var product = $(this).attr("name");
+    if (product) {
+      getProducts(product);
+    }
+  });
+
+  // https://dev.to/wangonya/displaying-a-css-spinner-on-ajax-calls-with-fetch-api-4ndo
+  function showSpinner() {
+    $("#spinner").addClass("show");
+  }
+
+  function hideSpinner() {
+    $("#spinner").removeClass("show");
+  }
+
+  // fetching the price of bitcoin and loading search history on page load
+  loadProductSearches();
   getBitcoinPrice();
-});
-
-
-
-const setting = {
-	"async": true,
-	"crossDomain": true,
-	// "url": "https://axesso-walmart-data-service.p.rapidapi.com/wlm/walmart-search-by-keyword?keyword=Lego%20Star%20Wars&page=1&type=text&sortBy=best_match",
-    "method": "GET",
-	"headers": {
-		"x-rapidapi-host": "axesso-walmart-data-service.p.rapidapi.com",
-		"x-rapidapi-key": "4652da77a0msh7a2f0759d2e237dp1cf962jsn08149038d679"
-	}
-};
-
-// var inputText=document.getElementById("searchForProductInput").value;
-// console.log(inputText);
-
-// var walmart_product = inputText;
-
-
-
-
-var apiUrl = "https://axesso-walmart-data-service.p.rapidapi.com/wlm/walmart-search-by-keyword?keyword=" + "wine" + "&page=1&type=text&sortBy=best_match";
-fetch(apiUrl, setting)
-    .then(function(response) {
-        if (response.ok) {
-            response.json().then(function(data) {
-                var test = data.item.props.pageProps.initialData.searchResult.itemStacks[0];
-                for (var i = 0; i < test.items.length; i++) {
-                    var test2 = test.items[i].price;
-                    var test3 = test.items[i].name;
-                    console.log("price: " + test2 + ", name: " + test3);
-                }
-                console.log(data.item.props.pageProps.initialData.searchResult.itemStacks[0]);    
-            });
-        } else {
-            alert("Error: " + response.statusText)
-        }
-    })
-    .catch(function(error) {
-        alert("Unable to connect to Google Auth");
-    });
-                
-
-$.ajax(setting).done(function (response) {
-	console.log(response);
 });

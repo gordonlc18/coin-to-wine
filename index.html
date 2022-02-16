@@ -8,7 +8,6 @@
       href="./assets/vendor/boxicons/css/boxicons.min.css"
       rel="stylesheet"
     />
-    <!-- Compiled and minified CSS -->
     <link
       rel="stylesheet"
       href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
@@ -22,122 +21,97 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>Coin to Wine</title>
+    <title>Shop With Bitcoin</title>
   </head>
-  <body class="has-background-white"></body>
-
-  <!-- FAVORITES BUTTON  -->
-       <!-- HIDE UNTIL RESULTS PAGE.  -->
-       <!-- SAVE TO LOCAL STORAGE ?????????????? -->
-       <!-- This button may not be necessary -->
-      
-                <div class="level-right mt-3">
-        <p class="level-item">
-      <button id="addToFavBtn" class="button is-primary is-focused is-hidden">Favorites</button>
-        </p>
-      </div>
-
-
-       <!-- LOGO AND TAGLINE/SECTION LAYOUT -->
-          <section class="section is-medium">
-          <div class="container">
-            <div class="is-mobile has-text-centered">
-         <h1 class="title is-1"><strong>Shop With</strong>
-          <img
-          class="ml-2 mt-3"
-          width="64"
-          height="64"
-          src="./assets/img/bitcoin-logo.png"
-          alt="Bitcoin Logo"/></h1>
-          <h2 class="subtitle">
-           Search for your favorite items to see how the USD price compares to <strong>Bitcoin</strong>!
+  <body>
+    <!-- Page Header -->
+    <header>
+      <nav class="navbar is-transparent has-shadow">
+        <div class="title has-text-centered">
+          <h1 class="is-size-1 is-size-3-mobile">
+            <b>Shop With</b>
+            <img
+              class="ml-2 mt-3"
+              width="10%"
+              height="10%"
+              src="./assets/img/bitcoin-logo.png"
+              alt="Bitcoin Logo"
+            />
+          </h1>
+        </div>
+        <div class="mx-1 mb-2 subtitle">
+          <h2 class="is-size-7-mobile">
+            Search for your favorite items to see how the USD price compares to
+            <strong>Bitcoin</strong>!
           </h2>
-          </div>
-          </div>
-          </section>
-         
-
-    <!-- <main> -->
-      <!-- <div class="container mt-5">
-        <div class="ms-2">
-          <h3><b>Search for a Product:</b/h3>
-            <div class="mt-3">
-              <div>
-                <div class="select mb-3">
-                  <select class="is-hovered">
-                    <option>Select a Product Category</option>
-                    <option>With options</option>
-                  </select>
-                </div> -->
-
-                <!-- SEARCH BAR AND BUTTON -->
-                
-                <div class="container">
-                  <div class="columns is-mobile is-centered">
-                <div class="level-items">
-                  <div class="field has-addons">
+        </div>
+      </nav>
+    </header>
+     <!--- Loading Spinner for Ajax Calls--->
+     <div id="spinner"></div> 
+    <!-- Page Main Content -->
+    <main class="mt-5">
+      <div class="grid-container">
+        <!-- Search For a Product-->
+        <div class="search-container">
+            <div>
+                <p class="is-size-4 is-size-6-mobile"><b>Search for a Product:</b><p>
+            </div>
+            <div class="level-items">
+                <div class="field has-addons">
                   <p class="control">
-                  <input id="searchForProductInput" class="input" type="text" placeholder="Medium input">
+                    <input id="searchForProductInput" class="input" type="text" placeholder="Enter a product">
                   </p>
-              
                   <p class="control">
-                  <button id="rando-btn" class="button is-info">Search</button>
-                </p>
-              </div>
-            </div>
-          </div>
-          </div>
-          <!-- Results from search -->
-          <!-- CARDS WILL BE VISIBLE AFTER SEARCH BUTTON CLICK -->
-          <div id="results"class="card is-hidden">
-              <div class="card-image">
-                <figure class="image is-4by3">
-                  <img src="https://versions.bulma.io/0.7.2/images/placeholders/1280x960.png" alt="Placeholder image">
-                </figure>
-              </div>
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-left">
-                    <figure class="image is-48x48">
-                      <img src="https://versions.bulma.io/0.7.2/images/placeholders/96x96.png" alt="Placeholder image">
-                    </figure>
-                  </div>
-                  <div class="media-content">
-                    <p class="title is-4">John Smith</p>
-                    <p class="subtitle is-6">@johnsmith</p>
-                  </div>
+                    <button id="rando-btn" class="button is-info">Search</button>
+                  </p>
                 </div>
-            
-                <div class="content">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                  <a href="#">#css</a> <a href="#">#responsive</a>
-                  <br>
-        
-                </div>
-              </div>
             </div>
-          <!-- SEARCH HISTORY WILL BE SAVED IN LOCAL STORAGE  -->
-         
-
-                <h1 id="bitcoin-Price"></h1>
-              </div>
-            </div>
+            <ul id="list-SearchHistory">
+            </ul>
+        </div>
+        <!--- This will be the gallery for the different products--->
+        <div id="productCard" class="product-gallery is-hidden">
+          <div class="has-text-centered">
+            <p class="is-size-4 is-size-6-mobile mt-5"><b>Product Gallery</b></p>
             <hr/>
-            <ul id="list-SearchHistory" class="mt-4">
-              </ul>
-              
-              <!-- Footer -->
-              <footer class="footer">
-                <div class="content has-text-centered">
-                  <p>
-                    <!-- Work on footer info...social links, crypto links?? -->
-                    Coding Brigaders © 2022 All Rights Reserved. 
-                    </p>
-                </div>
-              </footer>
-              
-    
+          </div>
+          <!--- Product cards will be dynamically populated here--->
+          <div class="product-cards-container">
+          </div>
+        </div>      
+      </div>
+    </main>
+    <!--- This is the Modal Window for Error messages--->
+    <div id="modal-error" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <div class="box">
+          <article class="media">
+            <div class="media-left">
+              <figure class="image is-64x64">
+                <img src="./assets/img/kissclipart-circle-clipart-parenting-logo-school-0c2059ca692ea80c.png" alt="Image">
+              </figure>
+            </div>
+            <div class="media-content">
+              <div id="error-content" class="content">
+                <h1><strong>Error</strong></h1>
+                <!--- The actual error message is dynamically populated--->
+                <p></p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+   
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p class="is-size-7-mobile">Coding Brigaders © 2022 All Rights Reserved.</p>
+      </div>
+    </footer>
     <script src="./assets/vendor/jquery/jquery-3.6.0.min.js"></script>
     <script src="./assets/vendor/moment/moment-with-locales.min.js"></script>
     <script src="./assets/js/script.js"></script>
