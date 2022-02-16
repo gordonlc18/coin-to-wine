@@ -40,16 +40,34 @@ $(function () {
       crossDomain: true,
       method: "GET",
       headers: {
-        "x-rapidapi-host": "",
-        "x-rapidapi-key": "",
+        "x-rapidapi-host": "axesso-walmart-data-service.p.rapidapi.com",
+        "x-rapidapi-key": "b27e1aaebdmsh5e18b202a907fe1p1cc241jsn89e10075c08e",
       },
     };
 
-    var apiURL = "${product}";
+    var apiURL = "https://axesso-walmart-data-service.p.rapidapi.com/wlm/walmart-search-by-keyword?keyword=" + "soap" + "&page=1&type=text&sortBy=best_match";
 
     fetch(apiURL, settings)
       .then(function (response) {
-        return response.json();
+        if (response.ok) {
+          response.json().then(function(data) {
+              var test = data.item.props.pageProps.initialData.searchResult.itemStacks[0];
+              for (var i = 0; i < test.items.length; i++) {
+                  var test2 = test.items[i].price;
+                  var test3 = test.items[i].name;
+                  console.log("price: " + test2 + ", name: " + test3);
+              }
+              console.log(data.item.props.pageProps.initialData.searchResult.itemStacks[0]);    
+          });
+      } else {
+          alert("Error: " + response.statusText)
+      }
+  })
+  .catch(function(error) {
+      alert("Unable to connect to Google Auth");
+  });
+        // return response.json();
+        
       })
       .then(function (data) {
         console.log(data);
@@ -72,6 +90,7 @@ $(function () {
 
     fetch(apiURL, settings)
       .then(function (response) {
+        
         return response.json();
       })
       .then(function (data) {
