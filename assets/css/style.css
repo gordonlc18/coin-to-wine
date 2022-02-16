@@ -4,12 +4,15 @@
   flex-direction: column;
   gap: 0.75rem;
 }
+
 .product-gallery {
   grid-area: gallery;
   display: flex;
   flex-direction: column;
   background-color: rgb(241, 237, 237);
 }
+
+/* stolen from boostrap but technically I still didnt use boostrap ;) */
 .product-cards-container {
   margin: 0 !important;
   display: -webkit-box;
@@ -24,6 +27,7 @@
   --bs-gutter-y: 0;
 }
 
+/* also stolen from boostrap */
 .product-cards-container > * {
   flex-shrink: 0;
   width: 100%;
@@ -41,6 +45,7 @@
   flex: 0 0 auto;
 }
 
+/* I despise bulma's grid system */
 @media (min-width: 768px) {
   /* For desktop: */
   .col-1 {
@@ -99,4 +104,39 @@
 .searches button {
   width: 50%;
   font-size: 75%;
+}
+
+/* css for loading spinner */
+#spinner {
+  visibility: hidden;
+  width: 80px;
+  height: 80px;
+
+  border: 2px solid #f3f3f3;
+  border-top: 3px solid #f25a41;
+  border-radius: 100%;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* https://stackoverflow.com/questions/18729338/how-to-make-a-div-appear-on-top-of-everything-else-on-the-screen */
+#spinner.show {
+  visibility: visible;
+  z-index: 99 !important;
 }

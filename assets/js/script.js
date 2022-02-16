@@ -27,6 +27,7 @@ $(function () {
   }
 
   function getProducts(product, newSearch = true) {
+    showSpinner();
     const settings = {
       async: true,
       crossDomain: true,
@@ -42,6 +43,7 @@ $(function () {
     fetch(apiURL, settings).then(function (response) {
       if (response.ok) {
         emptyProductGallery();
+        hideSpinner();
         if (newSearch) {
           searchHistory.unshift({ product });
           displaySearchHistory(product);
@@ -59,6 +61,7 @@ $(function () {
           }
         });
       } else {
+        hideSpinner();
         showModalError(response.statusText);
       }
     });
@@ -114,6 +117,7 @@ $(function () {
   function emptyProductGallery() {
     $(".product-cards-container").empty();
   }
+
   function displayProductCards(item) {
     var price = formatter.format(item.price);
     var image = item.image;
@@ -123,6 +127,7 @@ $(function () {
     console.log("Price: " + price);
     console.log("Image: " + image);
     console.log("BTC: " + BTC);
+    console.log(item);
 
     var productCard = `
     <div class="card-item col-4 mb-2">
@@ -184,6 +189,15 @@ $(function () {
       getProducts(product, false);
     }
   });
+
+  // https://dev.to/wangonya/displaying-a-css-spinner-on-ajax-calls-with-fetch-api-4ndo
+  function showSpinner() {
+    $("#spinner").addClass("show");
+  }
+
+  function hideSpinner() {
+    $("#spinner").removeClass("show");
+  }
 
   loadProductSearches();
   getBitcoinPrice();
