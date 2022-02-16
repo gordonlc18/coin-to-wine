@@ -41,7 +41,7 @@ $(function () {
       method: "GET",
       headers: {
         "x-rapidapi-host": "axesso-walmart-data-service.p.rapidapi.com",
-        "x-rapidapi-key": "4652da77a0msh7a2f0759d2e237dp1cf962jsn08149038d679",
+        "x-rapidapi-key": "d8d2f7e79fmsh47084dabaa26026p1daedajsn3f84abdcfea8",
       },
     };
 
@@ -50,17 +50,17 @@ $(function () {
     fetch(apiURL, settings).then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          var test =
+          var products =
             data.item.props.pageProps.initialData.searchResult.itemStacks[0];
-          for (var i = 0; i < test.items.length; i++) {
-            var test2 = test.items[i].price;
-            var test3 = test.items[i].name;
-            var test4 = test.items[i].image;
-            console.log("price: " + test2 + ", name: " + test3 + test4);
+          for (var i = 0; i < products.items.length; i++) {
+            var price = products.items[i].price;
+            var name = products.items[i].name;
+            var image = products.items[i].image;
+            console.log(products.items[i]);
+            console.log("price: " + price);
+            console.log("name: " + name);
+            console.log("image: " + image);
           }
-          console.log(
-            data.item.props.pageProps.initialData.searchResult.itemStacks[0]
-          );
         });
       } else {
         showModalError(response.statusText);
@@ -84,7 +84,6 @@ $(function () {
 
     fetch(apiURL, settings)
       .then(function (response) {
-        
         return response.json();
       })
       .then(function (data) {
