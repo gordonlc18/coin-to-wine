@@ -46,13 +46,15 @@
         </div>
       </nav>
     </header>
+     <!--- Loading Spinner for Ajax Calls--->
+     <div id="spinner"></div> 
     <!-- Page Main Content -->
     <main class="mt-5">
       <div class="grid-container">
         <!-- Search For a Product-->
         <div class="search-container">
             <div>
-                <p class="is-size-4 is-size-6-mobile"><b>Search for a Product:</b><p>
+                <p class="is-size-4 is-size-6-mobile"><b>Search for a Product:</b/><p>
             </div>
             <div class="level-items">
                 <div class="field has-addons">
@@ -68,16 +70,13 @@
             </ul>
         </div>
         <!--- This will be the gallery for the different products--->
-        <div class="product-gallery is-hidden">
+        <div class="product-gallery">
           <div class="has-text-centered">
             <p class="is-size-4 is-size-6-mobile mt-5"><b>Product Gallery</b></p>
             <hr/>
           </div>
+          <!--- Product cards will be dynamically populated here--->
           <div class="product-cards-container">
-            <div class="card-item col-4 mb-1">1</div>
-            <div class="card-item col-4 mb-1">2</div>
-            <div class="card-item col-4 mb-1">3</div>
-            <div class="card-item col-4 mb-1">4</div>
           </div>
         </div>      
       </div>
@@ -105,6 +104,7 @@
       </div>
       <button class="modal-close is-large" aria-label="close"></button>
     </div>
+   
     <!-- Footer -->
     <footer class="footer">
       <div class="content has-text-centered">
