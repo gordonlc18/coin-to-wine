@@ -50,16 +50,16 @@ $(function () {
     fetch(apiURL, settings).then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          var product =
+          var products =
             data.item.props.pageProps.initialData.searchResult.itemStacks[0];
-          for (var i = 0; i < product.items.length; i++) {
-            var test2 = product.items[i].price;
-            var test3 = product.items[i].name;
-            var test4 = product.items[i].image;
-            console.log(product);
-            console.log("price: " + test2);
-            console.log("name: " + test3);
-            console.log("image: " + test4);
+          for (var i = 0; i < products.items.length; i++) {
+            var price = products.items[i].price;
+            var name = products.items[i].name;
+            var image = products.items[i].image;
+            console.log(products.items[i]);
+            console.log("price: " + price);
+            console.log("name: " + name);
+            console.log("image: " + image);
           }
         });
       } else {
