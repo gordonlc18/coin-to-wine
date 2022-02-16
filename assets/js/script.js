@@ -4,20 +4,12 @@ $(function () {
 
   $("#rando-btn").on("click", function () {
     var product = $("#searchForProductInput").val().trim();
-
     if (product) {
-      // Need to fetch the product information from api
-      // For now I will set price to something random but will need to get price from product info
       getProducts(product);
-      convertUSDTOBTC(8.32);
-      searchHistory.unshift({ product });
-      displaySearchHistory(product);
       $("#searchForProductInput").val("");
     } else {
       showModalError("Please enter a product!");
     }
-
-    saveSearchHistory();
   });
 
   $(".modal-close").on("click", function () {
@@ -31,10 +23,10 @@ $(function () {
 
   function convertUSDTOBTC(price) {
     var newprice = price / bitcoinPrice;
-    $("#bitcoin-Price").text("BTC " + newprice.toFixed(10));
+    return newprice.toFixed(10);
   }
 
-  function getProducts(product) {
+  function getProducts(product, newSearch = true) {
     const settings = {
       async: true,
       crossDomain: true,
@@ -49,17 +41,20 @@ $(function () {
 
     fetch(apiURL, settings).then(function (response) {
       if (response.ok) {
+        if (newSearch) {
+          searchHistory.unshift({ product });
+          displaySearchHistory(product);
+          saveSearchHistory();
+        }
         response.json().then(function (data) {
           var products =
             data.item.props.pageProps.initialData.searchResult.itemStacks[0];
-          for (var i = 0; i < products.items.length; i++) {
+          for (var i = 0; i < 8; i++) {
             var price = products.items[i].price;
-            var name = products.items[i].name;
-            var image = products.items[i].image;
-            console.log(products.items[i]);
-            console.log("price: " + price);
-            console.log("name: " + name);
-            console.log("image: " + image);
+            var item = products.items[i];
+            if (price > 0) {
+              displayProductCards(item);
+            }
           }
         });
       } else {
@@ -88,7 +83,6 @@ $(function () {
       })
       .then(function (data) {
         bitcoinPrice = data.bitcoin.usd;
-        console.log(bitcoinPrice);
       });
   }
 
@@ -110,6 +104,17 @@ $(function () {
     });
   }
 
+  function displayProductCards(item) {
+    var price = item.price;
+    var image = item.image;
+    var name = item.name;
+    var BTC = convertUSDTOBTC(price);
+    console.log("Name: " + name);
+    console.log("Price: " + price);
+    console.log("Image: " + image);
+    console.log("BTC: " + BTC);
+  }
+
   function displaySearchHistory(product) {
     // Need to append search history items to list here
     var listItem = $("<li>").addClass("searches mb-3");
@@ -128,7 +133,11 @@ $(function () {
 
   // When the user clicks on a button in search history list fetch products from past search history(Make another api call)
   $("#list-SearchHistory").on("click", "button", function () {
-    /*add code here!!!!!! */
+    // get button name value attribute
+    var product = $(this).attr("name");
+    if (product) {
+      getProducts(product, false);
+    }
   });
 
   loadProductSearches();
