@@ -86,40 +86,40 @@ const setting = {
     "method": "GET",
 	"headers": {
 		"x-rapidapi-host": "axesso-walmart-data-service.p.rapidapi.com",
-		"x-rapidapi-key": "b27e1aaebdmsh5e18b202a907fe1p1cc241jsn89e10075c08e"
+		"x-rapidapi-key": "4652da77a0msh7a2f0759d2e237dp1cf962jsn08149038d679"
 	}
 };
 
-var inputText=document.getElementById("searchForProductInput").value;
-console.log(inputText);
+// var inputText=document.getElementById("searchForProductInput").value;
+// console.log(inputText);
 
-var walmart_product = inputText;
-
-
+// var walmart_product = inputText;
 
 
-// var apiUrl = "https://axesso-walmart-data-service.p.rapidapi.com/wlm/walmart-search-by-keyword?keyword=" + walmart_product + "&page=1&type=text&sortBy=best_match";
-// fetch(apiUrl, setting)
-//     .then(function(response) {
-//         if (response.ok) {
-//             response.json().then(function(data) {
-//                 var test = data.item.props.pageProps.initialData.searchResult.itemStacks[0];
-//                 for (var i = 0; i < test.items.length; i++) {
-//                     var test2 = test.items[i].price;
-//                     var test3 = test.items[i].name;
-//                     console.log("price: " + test2 + ", name: " + test3);
-//                 }
-//                 console.log(data.item.props.pageProps.initialData.searchResult.itemStacks[0]);    
-//             });
-//         } else {
-//             alert("Error: " + response.statusText)
-//         }
-//     })
-//     .catch(function(error) {
-//         alert("Unable to connect to Google Auth");
-//     });
+
+
+var apiUrl = "https://axesso-walmart-data-service.p.rapidapi.com/wlm/walmart-search-by-keyword?keyword=" + "wine" + "&page=1&type=text&sortBy=best_match";
+fetch(apiUrl, setting)
+    .then(function(response) {
+        if (response.ok) {
+            response.json().then(function(data) {
+                var test = data.item.props.pageProps.initialData.searchResult.itemStacks[0];
+                for (var i = 0; i < test.items.length; i++) {
+                    var test2 = test.items[i].price;
+                    var test3 = test.items[i].name;
+                    console.log("price: " + test2 + ", name: " + test3);
+                }
+                console.log(data.item.props.pageProps.initialData.searchResult.itemStacks[0]);    
+            });
+        } else {
+            alert("Error: " + response.statusText)
+        }
+    })
+    .catch(function(error) {
+        alert("Unable to connect to Google Auth");
+    });
                 
 
-// $.ajax(setting).done(function (response) {
-// 	console.log(response);
-// });
+$.ajax(setting).done(function (response) {
+	console.log(response);
+});
