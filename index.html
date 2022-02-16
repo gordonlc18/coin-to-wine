@@ -50,45 +50,50 @@
     <main class="mt-5">
       <div class="grid-container">
         <!-- Search For a Product-->
-        <div class="search-container">
-            <div>
-                <p class="is-size-4 is-size-6-mobile"><b>Search for a Product:</b/><p>
-            </div>
-            <div>
-                <div class="select mb-3">
-                  <select class="is-hovered">
-                    <option>Select a Category</option>
-                    <option>With options</option>
-                  </select>
-                </div>
-            </div>
-            <div class="level-items">
-                <div class="field has-addons">
-                  <p class="control">
-                    <input id="searchForProductInput" class="input" type="text" placeholder="Enter a product">
-                  </p>
-                  <p class="control">
-                    <button id="rando-btn" class="button is-info">Search</button>
-                  </p>
-                </div>
-            </div>
-            <h1 id="bitcoin-Price"></h1>
+        <section class="search-container">
+            <form class="box">
+              <div>
+                  <p class="is-size-4 is-size-6-mobile"><b>Search for a Product:</b/><p>
+              </div>
+              <div>
+                  <div class="select mb-3 is-rounded is-medium">
+                    <select class="is-hovered ">
+                      <option selected disabled>Select a Category</option>
+                      <option>With options</option>
+                    </select>
+                  </div>
+              </div>
+              <div class="level-items">
+                  <div class="field has-addons">
+                    <p class="control">
+                      <input id="searchForProductInput" class="input" type="text" placeholder="Enter a product">
+                    </p>
+                    <p class="control">
+                      <button id="rando-btn" class="button is-info">Search</button>
+                    </p>
+                  </div>
+              </div>
+            </form>
+            <h1 id="bitcoin-Price">placeholder</h1>
             <ul id="list-SearchHistory">
             </ul>
-        </div>
+        </section>
         <!--- This will be the gallery for the different products--->
-        <div class="product-gallery">
+        <section class="product-gallery">
           <div class="has-text-centered">
             <p class="is-size-4 is-size-6-mobile mt-5"><b>Product Gallery</b></p>
             <hr/>
           </div>
-          <div class="product-cards-container">
-            <div class="card-item col-4 mb-1">1</div>
-            <div class="card-item col-4 mb-1">2</div>
-            <div class="card-item col-4 mb-1">3</div>
-            <div class="card-item col-4 mb-1">4</div>
+          <!-- product-cards-container ,  card-item col-4 mb-1-->
+          <div class="tile is-ancestor">
+            <div class="tile box is-3">
+              <div class="content">1</div>
+              </div>
+            <div class="tile box is-3">2</div>
+            <div class="tile box is-4">3</div>
+            <div class="tile box">4</div>
           </div>
-        </div>      
+        </section>      
       </div>
     </main>
     <!--- This is the Modal Window for Error messages--->
