@@ -63,6 +63,7 @@ $(function () {
     });
   }
 
+
   function getBitcoinPrice() {
     const settings = {
       async: true,

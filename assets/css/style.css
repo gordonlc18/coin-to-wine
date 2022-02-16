@@ -1,3 +1,14 @@
+html,
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+body > footer {
+    margin-top: auto;
+}
+
+
 .search-container {
   grid-area: search;
   display: flex;
@@ -42,6 +53,8 @@
   text-align: center;
   flex: 0 0 auto;
 }
+
+
 
 @media (min-width: 768px) {
   /* For desktop: */
