@@ -31,7 +31,7 @@ $(function () {
   }
 
   // Fetching the products from walmarts API
-  function getProducts(product, newSearch = true) {
+  function getProducts(product) {
     showSpinner();
     const settings = {
       async: true,
@@ -49,20 +49,27 @@ $(function () {
       if (response.ok) {
         emptyProductGallery();
         hideSpinner();
-        if (newSearch) {
-          searchHistory.unshift({ product });
-          displaySearchHistory(product);
-          saveSearchHistory();
-        }
+        searchHistory.unshift({ product });
+        saveSearchHistory();
+        emptySearchHistoryContainer();
+        loadProductSearches();
         response.json().then(function (data) {
           var products =
             data.item.props.pageProps.initialData.searchResult.itemStacks[0];
-          for (var i = 0; i < 8; i++) {
-            var price = products.items[i].price;
-            var item = products.items[i];
-            if (price > 0) {
-              displayProductCards(item);
+          if (products.items.length > 0) {
+            for (var i = 0; i < 8; i++) {
+              var price = products.items[i].price;
+              var item = products.items[i];
+              if (price > 0) {
+                displayProductCards(item);
+              }
             }
+          } else {
+            searchHistory = arrayRemove(product);
+            saveSearchHistory();
+            emptySearchHistoryContainer();
+            loadProductSearches();
+            showModalError(`No Products found with the name ${product}`);
           }
         });
       } else {
@@ -96,7 +103,33 @@ $(function () {
       });
   }
 
+  function uniq(a) {
+    let uniqMap = [];
+    let uniqueHistory = [];
+    a.forEach((c) => {
+      if (!uniqueHistory.includes(c.product)) {
+        uniqueHistory.push(c.product);
+      }
+    });
+    uniqueHistory.forEach((product) => {
+      uniqMap.unshift({ product });
+    });
+    return uniqMap;
+  }
+
+  // https://love2dev.com/blog/javascript-remove-from-array/
+  function arrayRemove(value) {
+    for (var i = 0; i < searchHistory.length; i++) {
+      var product = searchHistory[i].product;
+      if (value === product) {
+        searchHistory.splice(i, 1);
+      }
+    }
+    return searchHistory;
+  }
+
   function saveSearchHistory() {
+    searchHistory = uniq(searchHistory);
     localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
   }
 
@@ -173,6 +206,10 @@ $(function () {
     $(".product-cards-container").append(productCard);
   }
 
+  //empty search history if no products are found
+  function emptySearchHistoryContainer() {
+    $("#list-SearchHistory").empty();
+  }
   function displaySearchHistory(product) {
     // Append search history items to list here
     var listItem = $("<li>").addClass("searches mb-3");
@@ -194,7 +231,7 @@ $(function () {
     // get button name value attribute
     var product = $(this).attr("name");
     if (product) {
-      getProducts(product, false);
+      getProducts(product);
     }
   });
 
