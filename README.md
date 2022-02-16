@@ -17,6 +17,8 @@ You can look at previous searched terms by clicking the appropriate button below
 
 ### Link to deployed site
 
+https://gordonlc18.github.io/shopping_with_bitcoin/
+
 ## Contributors:
 
 John Fulghieri, Latravia Gordon, Rebekkah Huss, Ernest Paul © 2022 All Rights Reserved.
