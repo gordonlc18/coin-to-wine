@@ -87,7 +87,7 @@ $(function () {
       method: "GET",
       headers: {
         "x-rapidapi-host": "coingecko.p.rapidapi.com",
-        "x-rapidapi-key": "4652da77a0msh7a2f0759d2e237dp1cf962jsn08149038d679",
+        "x-rapidapi-key": "d8d2f7e79fmsh47084dabaa26026p1daedajsn3f84abdcfea8",
       },
     };
 
@@ -172,7 +172,7 @@ $(function () {
 
     var productCard = `
     <div class="card-item col-4 mb-2">
-      <div class="card">
+      <div class="card box">
         <div class="card-image">
           <figure class="image is-4by3">
             <img src=${image} alt="Product Image">
