@@ -171,8 +171,8 @@ $(function () {
     console.log(item);
 
     var productCard = `
-    <div class="card-item col-4 mb-2">
-      <div class="card box">
+    <article class="card-item col-4 mb-2">
+      <div class="card">
         <div class="card-image">
           <figure class="image is-4by3">
             <img src=${image} alt="Product Image">
@@ -201,7 +201,7 @@ $(function () {
           </div>
         </div>
       </div>
-    </div>`;
+    </article>`;
 
     $(".product-cards-container").append(productCard);
   }
