@@ -4,7 +4,7 @@
 
 # Description:
 
-With the Crypto space heating up, people want to know what they can buy with their bitcoin.  
+With the Crypto space heating up, people want to know what they can buy with their Bitcoin.  
 Our website allows users to search for common products, and display their price in dollars and Bitcoin equivalent.  
 Searches are persistent across sessions, so you can pick up where you left off.
 
@@ -16,6 +16,8 @@ You can look at previous searched terms by clicking the appropriate button below
 # Mock-Up
 
 ### Link to deployed site
+
+https://gordonlc18.github.io/shopping_with_bitcoin/
 
 ## Contributors:
 
