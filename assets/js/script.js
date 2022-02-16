@@ -41,7 +41,7 @@ $(function () {
       method: "GET",
       headers: {
         "x-rapidapi-host": "axesso-walmart-data-service.p.rapidapi.com",
-        "x-rapidapi-key": "4652da77a0msh7a2f0759d2e237dp1cf962jsn08149038d679",
+        "x-rapidapi-key": "d8d2f7e79fmsh47084dabaa26026p1daedajsn3f84abdcfea8",
       },
     };
 
@@ -50,16 +50,17 @@ $(function () {
     fetch(apiURL, settings).then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          var test =
+          var product =
             data.item.props.pageProps.initialData.searchResult.itemStacks[0];
-          for (var i = 0; i < test.items.length; i++) {
-            var test2 = test.items[i].price;
-            var test3 = test.items[i].name;
-            console.log("price: " + test2 + ", name: " + test3);
+          for (var i = 0; i < product.items.length; i++) {
+            var test2 = product.items[i].price;
+            var test3 = product.items[i].name;
+            var test4 = product.items[i].image;
+            console.log(product);
+            console.log("price: " + test2);
+            console.log("name: " + test3);
+            console.log("image: " + test4);
           }
-          console.log(
-            data.item.props.pageProps.initialData.searchResult.itemStacks[0]
-          );
         });
       } else {
         showModalError(response.statusText);
