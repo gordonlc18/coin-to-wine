@@ -38,7 +38,7 @@
             />
           </h1>
         </div>
-        <div class="mx-1 subtitle">
+        <div class="mx-1 mb-2 subtitle">
           <h2 class="is-size-7-mobile">
             Search for your favorite items to see how the USD price compares to
             <strong>Bitcoin</strong>!
@@ -46,35 +46,26 @@
         </div>
       </nav>
     </header>
+     <!--- Loading Spinner for Ajax Calls--->
+     <div id="spinner"></div> 
     <!-- Page Main Content -->
     <main class="mt-5">
       <div class="grid-container">
         <!-- Search For a Product-->
-        <section class="search-container">
-            <form class="box">
-              <div>
-                  <p class="is-size-4 is-size-6-mobile"><b>Search for a Product:</b/><p>
-              </div>
-              <div>
-                  <div class="select mb-3 is-rounded is-medium">
-                    <select class="is-hovered ">
-                      <option selected disabled>Select a Category</option>
-                      <option>With options</option>
-                    </select>
-                  </div>
-              </div>
-              <div class="level-items">
-                  <div class="field has-addons">
-                    <p class="control">
-                      <input id="searchForProductInput" class="input" type="text" placeholder="Enter a product">
-                    </p>
-                    <p class="control">
-                      <button id="rando-btn" class="button is-info">Search</button>
-                    </p>
-                  </div>
-              </div>
-            </form>
-            <h1 id="bitcoin-Price">placeholder</h1>
+        <div class="search-container">
+            <div>
+                <p class="is-size-4 is-size-6-mobile"><b>Search for a Product:</b/><p>
+            </div>
+            <div class="level-items">
+                <div class="field has-addons">
+                  <p class="control">
+                    <input id="searchForProductInput" class="input is-rounded" type="text" placeholder="Enter a product">
+                  </p>
+                  <p class="control">
+                    <button id="rando-btn" class="button is-info">Search</button>
+                  </p>
+                </div>
+            </div>
             <ul id="list-SearchHistory">
             </ul>
         </section>
@@ -84,14 +75,8 @@
             <p class="is-size-4 is-size-6-mobile mt-5"><b>Product Gallery</b></p>
             <hr/>
           </div>
-          <!-- product-cards-container ,  card-item col-4 mb-1-->
-          <div class="tile is-ancestor">
-            <div class="tile box is-3">
-              <div class="content">1</div>
-              </div>
-            <div class="tile box is-3">2</div>
-            <div class="tile box is-4">3</div>
-            <div class="tile box">4</div>
+          <!--- Product cards will be dynamically populated here--->
+          <div class="product-cards-container">
           </div>
         </section>      
       </div>
@@ -119,6 +104,7 @@
       </div>
       <button class="modal-close is-large" aria-label="close"></button>
     </div>
+   
     <!-- Footer -->
     <footer class="footer">
       <div class="content has-text-centered">
