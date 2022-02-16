@@ -1,3 +1,14 @@
+/* Fix for footer placement */
+html,
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+body > footer {
+    margin-top: auto;
+}
+
 /* No Boostrap was used in the making of this project just a little css grid, bulma and alot of flexbox  */
 .search-container {
   grid-area: search;
