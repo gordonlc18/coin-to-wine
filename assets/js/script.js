@@ -41,6 +41,7 @@ $(function () {
 
     fetch(apiURL, settings).then(function (response) {
       if (response.ok) {
+        emptyProductGallery();
         if (newSearch) {
           searchHistory.unshift({ product });
           displaySearchHistory(product);
@@ -104,15 +105,59 @@ $(function () {
     });
   }
 
+  // Create our number formatter.
+  var formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
+
+  function emptyProductGallery() {
+    $(".product-cards-container").empty();
+  }
   function displayProductCards(item) {
-    var price = item.price;
+    var price = formatter.format(item.price);
     var image = item.image;
     var name = item.name;
-    var BTC = convertUSDTOBTC(price);
+    var BTC = convertUSDTOBTC(item.price);
     console.log("Name: " + name);
     console.log("Price: " + price);
     console.log("Image: " + image);
     console.log("BTC: " + BTC);
+
+    var productCard = `
+    <div class="card-item col-4 mb-2">
+      <div class="card">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <img src=${image} alt="Product Image">
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="content is-size-6 is-size-7-mobile">
+            <p class="description">
+              <b>Product Description:</b> 
+              <span>
+                ${name}
+              </span>
+            </p>
+            <p class="price">
+              <b>USD Price:</b>
+              <span>
+                ${price}
+              </span>
+            </p>
+            <p class="btc">
+              <b>BTC:</b>
+              <span>
+                ${BTC}
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>`;
+
+    $(".product-cards-container").append(productCard);
   }
 
   function displaySearchHistory(product) {

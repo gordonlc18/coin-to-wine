@@ -33,13 +33,11 @@
   margin-top: var(--bs-gutter-y);
 }
 
+.product-cards-container > .card-item > .card {
+  height: 100%;
+}
+
 .card-item {
-  /* background: gold; */
-  line-height: 100px;
-  color: white;
-  font-weight: bold;
-  font-size: 2em;
-  text-align: center;
   flex: 0 0 auto;
 }
 
