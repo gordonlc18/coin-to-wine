@@ -1,3 +1,4 @@
+/* No Boostrap was used in the making of this project just a little css grid, bulma and alot of flexbox  */
 .search-container {
   grid-area: search;
   display: flex;

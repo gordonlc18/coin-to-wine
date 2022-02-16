@@ -2,6 +2,7 @@ $(function () {
   var searchHistory;
   var bitcoinPrice;
 
+  //How it all got started
   $("#rando-btn").on("click", function () {
     var product = $("#searchForProductInput").val().trim();
     if (product) {
@@ -12,20 +13,24 @@ $(function () {
     }
   });
 
+  //Close the modal window
   $(".modal-close").on("click", function () {
     $(".modal").removeClass("is-active");
   });
 
+  //Showing Modal instead of alert and dynamically populating error message
   function showModalError(msg) {
     $("#error-content p").text(msg);
     $("#modal-error").addClass("is-active");
   }
 
+  //Function for converting us price to bitcoin
   function convertUSDTOBTC(price) {
     var newprice = price / bitcoinPrice;
     return newprice.toFixed(10);
   }
 
+  // Fetching the products from walmarts API
   function getProducts(product, newSearch = true) {
     showSpinner();
     const settings = {
@@ -67,6 +72,7 @@ $(function () {
     });
   }
 
+  //Fetching the price of bitcoin from coingecko
   function getBitcoinPrice() {
     const settings = {
       async: true,
@@ -114,10 +120,12 @@ $(function () {
     currency: "USD",
   });
 
+  // We will call this function to empty product gallery when searching for new products
   function emptyProductGallery() {
     $(".product-cards-container").empty();
   }
 
+  //displaying product cards in the product gallery section
   function displayProductCards(item) {
     var price = formatter.format(item.price);
     var image = item.image;
@@ -166,7 +174,7 @@ $(function () {
   }
 
   function displaySearchHistory(product) {
-    // Need to append search history items to list here
+    // Append search history items to list here
     var listItem = $("<li>").addClass("searches mb-3");
     var div = $("<div>").addClass("");
     var button = $("<button>")
@@ -199,6 +207,7 @@ $(function () {
     $("#spinner").removeClass("show");
   }
 
+  // fetching the price of bitcoin and loading search history on page load
   loadProductSearches();
   getBitcoinPrice();
 });
