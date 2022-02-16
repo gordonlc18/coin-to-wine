@@ -8,7 +8,7 @@ $(function () {
     if (product) {
       // Need to fetch the product information from api
       // For now I will set price to something random but will need to get price from product info
-
+      getProducts(product);
       convertUSDTOBTC(8.32);
       searchHistory.unshift({ product });
       displaySearchHistory(product);
@@ -40,20 +40,31 @@ $(function () {
       crossDomain: true,
       method: "GET",
       headers: {
-        "x-rapidapi-host": "",
-        "x-rapidapi-key": "",
+        "x-rapidapi-host": "axesso-walmart-data-service.p.rapidapi.com",
+        "x-rapidapi-key": "4652da77a0msh7a2f0759d2e237dp1cf962jsn08149038d679",
       },
     };
 
-    var apiURL = "${product}";
+    var apiURL = `https://axesso-walmart-data-service.p.rapidapi.com/wlm/walmart-search-by-keyword?keyword=${product}&page=1&type=text&sortBy=best_match`;
 
-    fetch(apiURL, settings)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        console.log(data);
-      });
+    fetch(apiURL, settings).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (data) {
+          var test =
+            data.item.props.pageProps.initialData.searchResult.itemStacks[0];
+          for (var i = 0; i < test.items.length; i++) {
+            var test2 = test.items[i].price;
+            var test3 = test.items[i].name;
+            console.log("price: " + test2 + ", name: " + test3);
+          }
+          console.log(
+            data.item.props.pageProps.initialData.searchResult.itemStacks[0]
+          );
+        });
+      } else {
+        showModalError(response.statusText);
+      }
+    });
   }
 
   function getBitcoinPrice() {
