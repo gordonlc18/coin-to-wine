@@ -55,7 +55,8 @@ $(function () {
           for (var i = 0; i < test.items.length; i++) {
             var test2 = test.items[i].price;
             var test3 = test.items[i].name;
-            console.log("price: " + test2 + ", name: " + test3);
+            var test4 = test.items[i].image;
+            console.log("price: " + test2 + ", name: " + test3 + test4);
           }
           console.log(
             data.item.props.pageProps.initialData.searchResult.itemStacks[0]
@@ -74,7 +75,7 @@ $(function () {
       method: "GET",
       headers: {
         "x-rapidapi-host": "coingecko.p.rapidapi.com",
-        "x-rapidapi-key": "b27e1aaebdmsh5e18b202a907fe1p1cc241jsn89e10075c08e",
+        "x-rapidapi-key": "4652da77a0msh7a2f0759d2e237dp1cf962jsn08149038d679",
       },
     };
 
