@@ -13,7 +13,7 @@ $(function () {
     }
   });
 
-  //Close the modal window
+  //Close the modal window listener
   $("#modal-error .delete, .modal-background").on("click", function () {
     $(".modal").removeClass("is-active");
   });
