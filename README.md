@@ -13,9 +13,21 @@ Searches are persistent across sessions, so you can pick up where you left off.
 Enter a product in the search bar, and click search to get products and prices.
 You can look at previous searched terms by clicking the appropriate button below the search box.
 
+## Technologies Used
+
+- HTML
+- Javascript
+- JQuery
+- Bulma CSS framework
+- RapidAPI
+
 # Mock-Up
 
+### Screenshots
+
 ### Link to deployed site
+
+https://gordonlc18.github.io/shopping_with_bitcoin/
 
 ## Contributors:
 

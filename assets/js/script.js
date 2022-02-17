@@ -6,7 +6,7 @@ $(function () {
   $("#rando-btn").on("click", function () {
     var product = $("#searchForProductInput").val().trim();
     if (product) {
-      getProducts(product);
+      getProducts(product.toLowerCase());
       $("#searchForProductInput").val("");
     } else {
       showModalError("Please enter a product!");
