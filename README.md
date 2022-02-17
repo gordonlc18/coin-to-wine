@@ -1,11 +1,11 @@
-# Shop with Coin
+# Shop with Crypto
 
 ## Interactive Front-End Project
 
 # Description:
 
-With the Crypto space heating up, people want to know what they can buy with their Bitcoin.  
-Our website allows users to search for common products, and display their price in dollars and Bitcoin equivalent.  
+With the Crypto space heating up, people want to know what they can buy with their cryptocurrencies.  
+Our website allows users to search for common products, and display their price in dollars and the equivalent in Bitcoin, Ehtereum, Binance Coin, Cardano and Solana(Top 5 Cryptos by Market Cap).  
 Searches are persistent across sessions, so you can pick up where you left off.
 
 ## How To
