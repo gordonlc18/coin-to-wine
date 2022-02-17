@@ -20,7 +20,7 @@
     />
     <link rel="stylesheet" href="./assets/vendor/bulma/css/bulma.min.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>Shop With Bitcoin</title>
+    <title>Shop With Crypto</title>
   </head>
   <body>
     <!-- Page Header -->
@@ -41,7 +41,7 @@
         <div class="mx-2 mb-2 subtitle">
           <h2 class="is-size-7-mobile">
             Search for products to see how the USD price compares to
-            <strong>Bitcoin</strong>!
+            <strong>Crypto</strong>!
           </h2>
         </div>
       </nav>
@@ -53,19 +53,34 @@
       <div class="grid-container">
         <!-- Search For a Product-->
         <section class="search-container">
-          <div>
-            <p class="is-size-4 is-size-6-mobile">
-              <b>Search for a Product:</b>
+          <div class="search-title">
+            <p class="is-size-4 is-size-7-mobile">
+              <b>Search for Products:</b>
             </p>
+          </div>
+          <div class="field">
+            <label class="label">Select a Crytocurrency</label>
+            <div class="control">
+              <div class="select small">
+                <select>
+                  <option value="bitcoin" selected>Bitcoin</option>
+                  <option value="ethereum">Ethereum</option>
+                  <option value="binancecoin">Binance Coin</option>
+                  <option value="cardano">Cardano</option>
+                  <option value="solana">Solana</option>
+                </select>
+              </div>
+            </div>
           </div>
           <div class="level-items">
             <div class="field has-addons">
               <p class="control">
                 <input
                   id="searchForProductInput"
-                  class="input is-rounded"
+                  class="input small is-rounded"
                   type="text"
-                  placeholder="Enter a product"
+                  placeholder="Search Products"
+                  maxlength="25"
                 />
               </p>
               <p class="control">
@@ -77,6 +92,7 @@
           </div>
           <ul id="list-SearchHistory" class="col-sm-11"></ul>
         </section>
+
         <!--- This will be the gallery for the different products--->
         <section id="productCard" class="product-gallery">
           <div class="has-text-centered">
@@ -91,14 +107,11 @@
       </div>
     </main>
     <!--- This is the Modal Window for Error messages--->
-    <!--- This is the Modal Window for Error messages--->
     <div id="modal-error" class="modal">
       <div class="modal-background"></div>
       <div class="modal-card">
         <div class="modal-card-head">
-          <h1 class="modal-card-title has-text-weight-bold">
-            <strong>Error</strong>
-          </h1>
+          <h1 class="modal-card-title has-text-weight-bold"></h1>
           <button class="is-large delete is-right" aria-label="close"></button>
         </div>
         <article class="media modal-card-body">

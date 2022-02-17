@@ -1,6 +1,16 @@
 $(function () {
   var searchHistory;
-  var bitcoinPrice;
+  var cryptoPrice;
+  var selectedCrypto = "bitcoin";
+  var cryptoLables = new Map([
+    ["bitcoin", "BTC"],
+    ["ethereum", "ETH"],
+    ["binancecoin", "BNB"],
+    ["cardano", "ADA"],
+    ["solana", "SOL"],
+  ]);
+  var errorImgPath =
+    "./assets/img/kissclipart-circle-clipart-parenting-logo-school-0c2059ca692ea80c.png";
 
   //How it all got started
   $("#rando-btn").on("click", function () {
@@ -13,20 +23,31 @@ $(function () {
     }
   });
 
-  //Close the modal window listener
-  $("#modal-error .delete, .modal-background").on("click", function () {
+  //Listener for drop down menu change
+  $("select").change(function () {
+    var oldVlaue = selectedCrypto;
+    selectedCrypto = this.value;
+    var msg = `Warning you just changed the cryocurrency to ${selectedCrypto} from ${oldVlaue}`;
+    var warningPath = "./assets/img/warning.jpg";
+    getCryptoPrice();
+    showModalError(msg, "Warning", warningPath);
+  });
+  //Close the modal window
+  $(".modal-card-head button").on("click", function () {
     $(".modal").removeClass("is-active");
   });
 
   //Showing Modal instead of alert and dynamically populating error message
-  function showModalError(msg) {
+  function showModalError(msg, title = "Error", srcPath = errorImgPath) {
+    $(".modal-card-title").text(title);
     $("#error-content p").text(msg);
+    $("#modal-error .image img").attr("src", srcPath);
     $("#modal-error").addClass("is-active");
   }
 
   //Function for converting us price to bitcoin
   function convertUSDTOBTC(price) {
-    var newprice = price / bitcoinPrice;
+    var newprice = price / cryptoPrice;
     return newprice.toFixed(10);
   }
 
@@ -80,7 +101,7 @@ $(function () {
   }
 
   //Fetching the price of bitcoin from coingecko
-  function getBitcoinPrice() {
+  function getCryptoPrice() {
     const settings = {
       async: true,
       crossDomain: true,
@@ -91,15 +112,16 @@ $(function () {
       },
     };
 
-    var apiURL =
-      "https://coingecko.p.rapidapi.com/simple/price?ids=bitcoin&vs_currencies=usd";
+    var apiURL = `https://coingecko.p.rapidapi.com/simple/price?ids=${selectedCrypto}&vs_currencies=usd`;
 
     fetch(apiURL, settings)
       .then(function (response) {
         return response.json();
       })
       .then(function (data) {
-        bitcoinPrice = data.bitcoin.usd;
+        console.log(data);
+        cryptoPrice = data[selectedCrypto]["usd"];
+        console.log(cryptoPrice);
       });
   }
 
@@ -164,6 +186,7 @@ $(function () {
     var image = item.image;
     var name = item.name;
     var BTC = convertUSDTOBTC(item.price);
+    var label = cryptoLables.get(selectedCrypto);
     console.log("Name: " + name);
     console.log("Price: " + price);
     console.log("Image: " + image);
@@ -193,7 +216,7 @@ $(function () {
               </span>
             </p>
             <p class="btc">
-              <b>BTC:</b>
+              <b>${label}:</b>
               <span>
                 ${BTC}
               </span>
@@ -246,5 +269,5 @@ $(function () {
 
   // fetching the price of bitcoin and loading search history on page load
   loadProductSearches();
-  getBitcoinPrice();
+  getCryptoPrice();
 });

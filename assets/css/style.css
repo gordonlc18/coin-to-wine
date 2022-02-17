@@ -65,12 +65,19 @@ button {
 /* mobile responsive */
 @media (max-width: 600px) {
   .input.small {
-    border-radius: 2px;
     font-size: 0.7rem;
   }
 
   .button.small {
     font-size: 0.7rem;
+  }
+
+  .select.small {
+    border-radius: 2px;
+    font-size: 0.6rem;
+  }
+  .label {
+    font-size: 0.6rem;
   }
 
   .col-sm-11 {
