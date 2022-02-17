@@ -30,6 +30,7 @@ $(function () {
     var msg = `Warning you just changed the cryocurrency to ${selectedCrypto} from ${oldVlaue}`;
     var warningPath = "./assets/img/warning.jpg";
     getCryptoPrice();
+    switchLogo();
     showModalError(msg, "Warning", warningPath);
   });
   //Close the modal window
@@ -178,6 +179,34 @@ $(function () {
   // We will call this function to empty product gallery when searching for new products
   function emptyProductGallery() {
     $(".product-cards-container").empty();
+  }
+  
+  //function to swtich the logo in the nav
+  function switchLogo(){
+    var bitcoin = "./assets/img/bitcoin-logo.png";
+    var ethereum = "./assets/img/ethereum.jpg";
+    var binance = "./assets/img/binance-coin-bnb-logo.png";
+    var cardano = "./assets/img/cardano.jpg";
+    var solana = "./assets/img/Solana-logo.png";
+
+    $(".navbar img").removeClass();
+
+    if(selectedCrypto === 'ethereum') {
+      $(".navbar img").addClass("mt-3 ethereum");
+      $(".navbar img").attr("src", ethereum);
+    } else if(selectedCrypto === 'binancecoin') {
+      $(".navbar img").addClass("mt-3 bnb");
+      $(".navbar img").attr("src", binance);
+    } else if(selectedCrypto === 'cardano') {
+      $(".navbar img").addClass("mt-1 cardano");
+      $(".navbar img").attr("src", cardano);
+    } else if (selectedCrypto === 'solana') {
+      $(".navbar img").addClass("mt-3 solana");
+      $(".navbar img").attr("src", solana);
+    } else {
+      $(".navbar img").addClass("ml-2 mt-3 bitcoin");
+      $(".navbar img").attr("src", bitcoin);
+    }  
   }
 
   //displaying product cards in the product gallery section
