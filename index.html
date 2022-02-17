@@ -53,61 +53,72 @@
       <div class="grid-container">
         <!-- Search For a Product-->
         <section class="search-container">
-            <div>
-                <p class="is-size-4 is-size-6-mobile"><b>Search for a Product:</b></p>
+          <div>
+            <p class="is-size-4 is-size-6-mobile">
+              <b>Search for a Product:</b>
+            </p>
+          </div>
+          <div class="level-items">
+            <div class="field has-addons">
+              <p class="control">
+                <input
+                  id="searchForProductInput"
+                  class="input is-rounded"
+                  type="text"
+                  placeholder="Enter a product"
+                />
+              </p>
+              <p class="control">
+                <button id="rando-btn" class="button small is-info">
+                  Search
+                </button>
+              </p>
             </div>
-            <div class="level-items">
-                <div class="field has-addons">
-                  
-                  <p class="control">
-                    <input id="searchForProductInput" class="input is-rounded" type="text" placeholder="Enter a product">
-                  </p>
-                  <p class="control">
-                    <button id="rando-btn" class="button small is-info ">Search</button>
-                  </p>
-                </div>
-            </div>
-            <ul id="list-SearchHistory" class="col-sm-11">
-            </ul>
+          </div>
+          <ul id="list-SearchHistory" class="col-sm-11"></ul>
         </section>
         <!--- This will be the gallery for the different products--->
         <section id="productCard" class="product-gallery">
           <div class="has-text-centered">
-            <p class="is-size-4 is-size-7-mobile mt-5 px-3"><b>Product Gallery</b></p>
-            <hr/>
+            <p class="is-size-4 is-size-7-mobile mt-5 px-3">
+              <b>Product Gallery</b>
+            </p>
+            <hr />
           </div>
           <!--- Product cards will be dynamically populated here--->
-          <div class="product-cards-container">
-          </div>
-        </section>      
+          <div class="product-cards-container"></div>
+        </section>
       </div>
     </main>
+    <!--- This is the Modal Window for Error messages--->
     <!--- This is the Modal Window for Error messages--->
     <div id="modal-error" class="modal">
       <div class="modal-background"></div>
       <div class="modal-card">
         <div class="modal-card-head">
-          <h1 class="modal-card-title"><strong>Error</strong></h1>
+          <h1 class="modal-card-title has-text-weight-bold">
+            <strong>Error</strong>
+          </h1>
           <button class="is-large delete is-right" aria-label="close"></button>
         </div>
         <article class="media modal-card-body">
           <div class="media-left">
-              <figure class="image is-64x64">
-                <img
-                  src="./assets/img/kissclipart-circle-clipart-parenting-logo-school-0c2059ca692ea80c.png"
-                  alt="Image"
-                />
-              </figure>
-            </div>
+            <figure class="image is-64x64">
+              <img
+                src="./assets/img/kissclipart-circle-clipart-parenting-logo-school-0c2059ca692ea80c.png"
+                alt="Forbidden Symbol"
+              />
+            </figure>
+          </div>
           <div class="media-content">
-              <div id="error-content" class="content">
-                <!--- The actual error message is dynamically populated--->
-                <p></p>
-              </div>
+            <div id="error-content" class="content">
+              <!--- The actual error message is dynamically populated--->
+              <p></p>
             </div>
-          </article>
+          </div>
+        </article>
+      </div>
     </div>
-
     <!-- Footer -->
     <footer class="footer">
       <div class="content has-text-centered">
