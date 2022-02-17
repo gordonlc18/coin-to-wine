@@ -20,6 +20,8 @@ You can look at previous searched terms by clicking the appropriate button below
 - JQuery
 - Bulma CSS framework
 - RapidAPI
+  - CoinGecko API
+  - Axesso - Walmart Data Service API
 
 ## Screenshots
 
