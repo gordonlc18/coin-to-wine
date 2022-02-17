@@ -21,12 +21,10 @@ You can look at previous searched terms by clicking the appropriate button below
 - Bulma CSS framework
 - RapidAPI
 
-# Mock-Up
+## Screenshots
 
-### Screenshots
-
-<img src="./assets/img/Screenshot2-desktop.PNG" alt="desktop deployment" style="max-width: 500px;">
-<img src="./assets/img/Screenshot1-mobile.PNG" alt="mobile deployment" style="max-width: 200px;">
+<img src="./assets/img/Screenshot2-desktop.PNG" alt="desktop deployment" style="max-width: 400px;">
+<img src="./assets/img/Screenshot1-mobile.PNG" alt="mobile deployment" style="max-width: 200px; max-height: 300px">
 
 ### Link to deployed site
 
