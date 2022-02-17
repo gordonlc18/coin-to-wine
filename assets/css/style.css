@@ -57,6 +57,17 @@ body > footer {
   flex: 0 0 auto;
 }
 
+/* mobile responsive */
+@media (max-width: 600px) {
+  .input.small {
+    border-radius: 2px;
+    font-size: 0.7rem;
+  }
+
+  .button.small {
+    font-size: 0.7rem;
+  }
+}
 /* I despise bulma's grid system */
 @media (min-width: 768px) {
   /* For desktop: */
@@ -100,7 +111,7 @@ body > footer {
 
 .grid-container {
   display: grid;
-  grid-template-areas: "search gallery gallery gallery gallery gallery";
+  grid-template-areas: "search search gallery gallery gallery gallery";
   grid-gap: 10px;
   padding: 15px;
 }
@@ -114,7 +125,6 @@ body > footer {
 }
 
 .searches button {
-  width: 50%;
   font-size: 75%;
 }
 
