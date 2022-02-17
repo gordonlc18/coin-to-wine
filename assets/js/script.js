@@ -180,7 +180,7 @@ $(function () {
             </figure>
           </div>
           <div class="card-content">
-            <div class="content is-size-6 is-size-7-mobile">
+            <div class="content is-size-10 is-size-12-mobile">
               <p class="description">
                 <b>Product Description:</b> 
                 <span>
@@ -204,7 +204,7 @@ $(function () {
         </div>
       </div>
     </div>`;
-    
+
     $(".product-cards-container").append(productCard);
   }
 
