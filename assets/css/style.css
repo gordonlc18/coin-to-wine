@@ -73,6 +73,14 @@ button {
     font-size: 0.7rem;
   }
 
+  .select.small {
+    border-radius: 2px;
+    font-size: 0.7rem;
+  }
+  .label {
+    font-size: 0.7rem;
+  }
+
   .col-sm-11 {
     width: 91.66%;
   }
