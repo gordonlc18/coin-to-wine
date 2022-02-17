@@ -171,38 +171,40 @@ $(function () {
     console.log(item);
 
     var productCard = `
-    <div class="card-item col-4 mb-2">
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src=${image} alt="Product Image">
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content is-size-6 is-size-7-mobile">
-            <p class="description">
-              <b>Product Description:</b> 
-              <span>
-                ${name}
-              </span>
-            </p>
-            <p class="price">
-              <b>USD Price:</b>
-              <span>
-                ${price}
-              </span>
-            </p>
-            <p class="btc">
-              <b>BTC:</b>
-              <span>
-                ${BTC}
-              </span>
-            </p>
+    <div class="column">
+      <div class="card-item col-4 mb-2">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img src=${image} alt="Product Image">
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="content is-size-6 is-size-7-mobile">
+              <p class="description">
+                <b>Product Description:</b> 
+                <span>
+                  ${name}
+                </span>
+              </p>
+              <p class="price">
+                <b>USD Price:</b>
+                <span>
+                  ${price}
+                </span>
+              </p>
+              <p class="btc">
+                <b>BTC:</b>
+                <span>
+                  ${BTC}
+                </span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>`;
-
+    
     $(".product-cards-container").append(productCard);
   }
 

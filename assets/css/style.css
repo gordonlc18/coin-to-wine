@@ -58,9 +58,9 @@ body > footer {
 }
 
 /* I despise bulma's grid system */
-@media (min-width: 768px) {
+/* @media (min-width: 768px) { */
   /* For desktop: */
-  .col-1 {
+  /* .col-1 {
     width: 8.33%;
   }
   .col-2 {
@@ -96,7 +96,7 @@ body > footer {
   .col-12 {
     width: 100%;
   }
-}
+} */
 
 .grid-container {
   display: grid;
