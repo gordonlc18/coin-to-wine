@@ -38,16 +38,16 @@
             />
           </h1>
         </div>
-        <div class="mx-1 mb-2 subtitle">
+        <div class="mx-2 mb-2 subtitle">
           <h2 class="is-size-7-mobile">
-            Search for your favorite items to see how the USD price compares to
+            Search for products to see how the USD price compares to
             <strong>Bitcoin</strong>!
           </h2>
         </div>
       </nav>
     </header>
-     <!--- Loading Spinner for Ajax Calls--->
-     <div id="spinner"></div> 
+    <!--- Loading Spinner for Ajax Calls--->
+    <div id="spinner"></div>
     <!-- Page Main Content -->
     <main class="mt-5">
       <div class="grid-container">
@@ -63,17 +63,17 @@
                     <input id="searchForProductInput" class="input is-rounded" type="text" placeholder="Enter a product">
                   </p>
                   <p class="control">
-                    <button id="rando-btn" class="button is-info">Search</button>
+                    <button id="rando-btn" class="button small is-info ">Search</button>
                   </p>
                 </div>
             </div>
-            <ul id="list-SearchHistory">
+            <ul id="list-SearchHistory" class="col-sm-11">
             </ul>
         </section>
         <!--- This will be the gallery for the different products--->
         <section id="productCard" class="product-gallery">
           <div class="has-text-centered">
-            <p class="is-size-4 is-size-6-mobile mt-5"><b>Product Gallery</b></p>
+            <p class="is-size-4 is-size-7-mobile mt-5 px-3"><b>Product Gallery</b></p>
             <hr/>
           </div>
           <!--- Product cards will be dynamically populated here--->
@@ -93,7 +93,10 @@
         <article class="media modal-card-body">
           <div class="media-left">
               <figure class="image is-64x64">
-                <img src="./assets/img/kissclipart-circle-clipart-parenting-logo-school-0c2059ca692ea80c.png" alt="Image">
+                <img
+                  src="./assets/img/kissclipart-circle-clipart-parenting-logo-school-0c2059ca692ea80c.png"
+                  alt="Image"
+                />
               </figure>
             </div>
           <div class="media-content">
@@ -104,11 +107,13 @@
             </div>
           </article>
     </div>
-   
+
     <!-- Footer -->
     <footer class="footer">
       <div class="content has-text-centered">
-        <p class="is-size-7-mobile">Coding Brigaders © 2022 All Rights Reserved.</p>
+        <p class="is-size-7-mobile">
+          Coding Brigaders © 2022 All Rights Reserved.
+        </p>
       </div>
     </footer>
     <script src="./assets/vendor/jquery/jquery-3.6.0.min.js"></script>
