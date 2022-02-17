@@ -68,6 +68,10 @@ button {
     font-size: 0.7rem;
   }
 
+  h2.small {
+    font-size: 0.7rem;
+  }
+
   .button.small {
     font-size: 0.7rem;
   }
@@ -85,6 +89,18 @@ button {
   }
   .col-sm-12 {
     width: 100%;
+  }
+  .bnb {
+    width: 10% !important;
+  }
+  .cardano {
+    width: 14% !important;
+  }
+  .ethereum {
+    width: 15% !important;
+  }
+  .solana {
+    width: 13% !important;
   }
 }
 /* I despise bulma's grid system */
@@ -180,4 +196,28 @@ button {
 #spinner.show {
   visibility: visible;
   z-index: 99 !important;
+}
+
+.cardano {
+  width: 12%;
+  border-radius: 50%;
+}
+
+.bitcoin {
+  width: 10%;
+}
+
+.ethereum {
+  width: 9%;
+  border-radius: 50%;
+}
+
+.bnb {
+  width: 7%;
+  border-radius: 50%;
+}
+
+.solana {
+  width: 9%;
+  border-radius: 50%;
 }
