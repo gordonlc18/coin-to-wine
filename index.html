@@ -71,7 +71,7 @@
             </ul>
         </section>
         <!--- This will be the gallery for the different products--->
-        <div id="productCard" class="product-gallery">
+        <section id="productCard" class="product-gallery">
           <div class="has-text-centered">
             <p class="is-size-4 is-size-6-mobile mt-5"><b>Product Gallery</b></p>
             <hr/>
@@ -85,9 +85,12 @@
     <!--- This is the Modal Window for Error messages--->
     <div id="modal-error" class="modal">
       <div class="modal-background"></div>
-      <div class="modal-content">
-        <div class="box">
-          <article class="media">
+      <div class="modal-card">
+        <div class="modal-card-head">
+          <h1 class="modal-card-title"><strong>Error</strong></h1>
+          <button class="is-large delete is-right" aria-label="close"></button>
+        </div>
+          <article class="media modal-card-body">
             <div class="media-left">
               <figure class="image is-64x64">
                 <img src="./assets/img/kissclipart-circle-clipart-parenting-logo-school-0c2059ca692ea80c.png" alt="Image">
@@ -95,15 +98,11 @@
             </div>
             <div class="media-content">
               <div id="error-content" class="content">
-                <h1><strong>Error</strong></h1>
                 <!--- The actual error message is dynamically populated--->
                 <p></p>
               </div>
             </div>
           </article>
-        </div>
-      </div>
-      <button class="modal-close is-large" aria-label="close"></button>
     </div>
    
     <!-- Footer -->

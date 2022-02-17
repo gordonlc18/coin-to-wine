@@ -14,7 +14,7 @@ $(function () {
   });
 
   //Close the modal window
-  $(".modal-close").on("click", function () {
+  $("#modal-error .delete, .modal-background").on("click", function () {
     $(".modal").removeClass("is-active");
   });
 
