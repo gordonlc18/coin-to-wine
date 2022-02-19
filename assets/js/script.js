@@ -42,15 +42,8 @@ $(function () {
     var x = document.getElementById("productCard");
     if (x.classList.contains("is-hidden")) {
       x.classList.remove("is-hidden");
-<<<<<<< HEAD
-    // } else {
-    //   x.classList.add("is-hidden");
-     }
-  
-=======
       // console.log("it has it")
     }
->>>>>>> 6b8dedc7e2ccc0b860a6b9128bb996ca73919c85
   });
   //Showing Modal instead of alert and dynamically populating error message
   function showModalError(msg, title = "Error", srcPath = errorImgPath) {
@@ -298,11 +291,6 @@ $(function () {
     var x = document.getElementById("productCard");
     if (x.classList.contains("is-hidden")) {
       x.classList.remove("is-hidden");
-<<<<<<< HEAD
-    // } else {
-    //   x.classList.add("is-hidden");`
-=======
->>>>>>> 6b8dedc7e2ccc0b860a6b9128bb996ca73919c85
     }
     if (product) {
       getProducts(product);
