@@ -1,10 +1,226 @@
 /* Fix for footer placement */
 html,
 body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 body > footer {
-    margin-top: auto;
+  margin-top: auto;
+}
+/* USED TO TARGET IS-HIDDEN CLASSLIST IN JS TO HIDE PRODCT CARD-LG */
+.hide{
+  display: none;
+}
+/* No Boostrap was used in the making of this project just a little css grid, bulma and alot of flexbox  */
+.search-container {
+  grid-area: search;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.product-gallery {
+  grid-area: gallery;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(241, 237, 237);
+}
+
+/* stolen from boostrap but technically I still didnt use boostrap ;) */
+.product-cards-container {
+  margin: 0 !important;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+}
+
+/* also stolen from boostrap */
+.product-cards-container > * {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-top: var(--bs-gutter-y);
+}
+
+.product-cards-container > .card-item > .card {
+  height: 100%;
+}
+
+.card-item {
+  flex: 0 0 auto;
+}
+
+button {
+  display: block;
+  word-wrap: break-word;
+}
+
+/* mobile responsive */
+@media (max-width: 600px) {
+  .input.small {
+    font-size: 0.7rem;
+  }
+
+  h2.small {
+    font-size: 0.7rem;
+  }
+
+  .button.small {
+    font-size: 0.7rem;
+  }
+
+  .select.small {
+    border-radius: 2px;
+    font-size: 0.6rem;
+  }
+  .label {
+    font-size: 0.6rem;
+  }
+
+  .col-sm-11 {
+    width: 91.66%;
+  }
+  .col-sm-12 {
+    width: 100%;
+  }
+  .bnb {
+    width: 10% !important;
+  }
+  .cardano {
+    width: 14% !important;
+  }
+  .ethereum {
+    width: 15% !important;
+  }
+  .solana {
+    width: 13% !important;
+  }
+}
+
+@media (min-width: 768px) {
+  /* For desktop: */
+  .col-1 {
+    width: 8.33%;
+  }
+  .col-2 {
+    width: 16.66%;
+  }
+  .col-3 {
+    width: 25%;
+  }
+  .col-4 {
+    width: 33.33%;
+  }
+  .col-5 {
+    width: 41.66%;
+  }
+  .col-6 {
+    width: 50%;
+  }
+  .col-7 {
+    width: 58.33%;
+  }
+  .col-8 {
+    width: 66.66%;
+  }
+  .col-9 {
+    width: 75%;
+  }
+  .col-10 {
+    width: 83.33%;
+  }
+  .col-11 {
+    width: 91.66%;
+  }
+  .col-12 {
+    width: 100%;
+  }
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas: "search search gallery gallery gallery gallery";
+  grid-gap: 10px;
+  padding: 15px;
+}
+.navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.footer {
+  background-color: rgb(241, 237, 237);
+}
+
+.searches button {
+  font-size: 75%;
+}
+
+/* css for loading spinner */
+#spinner {
+  visibility: hidden;
+  width: 80px;
+  height: 80px;
+
+  border: 2px solid #1900a3;
+  border-top: 3px solid #f25a41;
+  border-radius: 100%;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* https://stackoverflow.com/questions/18729338/how-to-make-a-div-appear-on-top-of-everything-else-on-the-screen */
+#spinner.show {
+  visibility: visible;
+  z-index: 99 !important;
+}
+
+.cardano {
+  width: 12%;
+  border-radius: 50%;
+}
+
+.bitcoin {
+  width: 10%;
+}
+
+.ethereum {
+  width: 9%;
+  border-radius: 50%;
+}
+
+.bnb {
+  width: 7%;
+  border-radius: 50%;
+}
+
+.solana {
+  width: 9%;
+  border-radius: 50%;
 }

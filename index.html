@@ -8,7 +8,6 @@
       href="./assets/vendor/boxicons/css/boxicons.min.css"
       rel="stylesheet"
     />
-    <!-- Compiled and minified CSS -->
     <link
       rel="stylesheet"
       href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
@@ -19,127 +18,129 @@
       rel="stylesheet"
       href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css"
     />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-  
+    <link rel="stylesheet" href="./assets/vendor/bulma/css/bulma.min.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>Coin to Wine</title>
+    <title>Shop With Crypto</title>
   </head>
-  <body class="has-background-white"></body>
+  <body>
+    <!-- Page Header -->
+    <header>
+      <nav class="navbar is-transparent has-shadow">
+        <div class="title has-text-centered">
+          <h1 class="is-size-1 is-size-3-mobile">
+            <b>Shop With</b>
+            <img
+              class="mt-3 bitcoin"
+              src="./assets/img/bitcoin-logo.png"
+              alt="Bitcoin Logo"
+            />
+          </h1>
+        </div>
+        <div class="mx-2 mb-2 subtitle">
+          <h2 class="small">
+            Search for products to see how much everyday items costs in
+            <strong>Crypto</strong>!
+          </h2>
+        </div>
+      </nav>
+    </header>
+    <!--- Loading Spinner for Ajax Calls--->
+    <div id="spinner"></div>
+    <!-- Page Main Content -->
+    <main class="mt-5">
+      <div class="grid-container">
+        <!-- Search For a Product-->
+        <section class="search-container">
+          <div class="search-title">
+            <p class="is-size-4 is-size-7-mobile">
+              <b>Search for Products:</b>
+            </p>
+          </div>
+          <div class="field">
+            <label class="label">Select a Crytocurrency</label>
+            <div class="control">
+              <div class="select small">
+                <select>
+                  <option value="bitcoin" selected>Bitcoin</option>
+                  <option value="ethereum">Ethereum</option>
+                  <option value="binancecoin">Binance Coin</option>
+                  <option value="cardano">Cardano</option>
+                  <option value="solana">Solana</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="level-items">
+            <div class="field has-addons">
+              <p class="control">
+                <input
+                  id="searchForProductInput"
+                  class="input small is-rounded"
+                  type="text"
+                  placeholder="Search Products"
+                  maxlength="25"
+                />
+              </p>
+              <p class="control">
+                <button id="rando-btn" class="button small is-info">
+                  Search
+                </button>
+              </p>
+            </div>
+          </div>
+          <ul id="list-SearchHistory" class="col-sm-11"></ul>
+        </section>
 
-  <!-- FAVORITES BUTTON  -->
-       <!-- HIDE UNTIL RESULTS PAGE.  -->
-       <!-- SAVE TO LOCAL STORAGE ?????????????? -->
-       <!-- This button may not be necessary -->
-      
-                <div class="level-right mt-3">
-        <p class="level-item">
-      <button id="addToFavBtn" class="button is-primary is-focused is-hidden">Favorites</button>
+        <!--- This will be the gallery for the different products--->
+        <section id="productCard" class="product-gallery is-hidden">
+          <div class="has-text-centered">
+            <p class="is-size-4 is-size-7-mobile mt-5 px-3">
+              <b>Product Gallery</b>
+            </p>
+            <hr />
+          </div>
+          <!--- Product cards will be dynamically populated here--->
+          <div class="product-cards-container"></div>
+        </section>
+      </div>
+    </main>
+    <!--- This is the Modal Window for Error messages--->
+    <div id="modal-error" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <div class="modal-card-head">
+          <h1 class="modal-card-title has-text-weight-bold"></h1>
+          <button class="is-large delete is-right" aria-label="close"></button>
+        </div>
+        <article class="media modal-card-body">
+          <div class="media-left">
+            <figure class="image is-64x64">
+              <img
+                src="./assets/img/kissclipart-circle-clipart-parenting-logo-school-0c2059ca692ea80c.png"
+                alt="Forbidden Symbol"
+              />
+            </figure>
+          </div>
+          <div class="media-content">
+            <div id="error-content" class="content">
+              <!--- The actual error message is dynamically populated--->
+              <p></p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p class="is-size-7-mobile">
+          Coding Brigaders © 2022 All Rights Reserved.
         </p>
       </div>
-
-
-       <!-- LOGO AND TAGLINE/SECTION LAYOUT -->
-          <section class="section is-medium">
-          <div class="container">
-            <div class="is-mobile has-text-centered">
-         <h1 class="title is-1"><strong>Shop With</strong>
-          <img
-          class="ml-2 mt-3"
-          width="64"
-          height="64"
-          src="./assets/img/bitcoin-logo.png"
-          alt="Bitcoin Logo"/></h1>
-          <h2 class="subtitle">
-           Search for your favorite items to see how the USD price compares to <strong>Bitcoin</strong>!
-          </h2>
-          </div>
-          </div>
-          </section>
-         
-
-    <!-- <main> -->
-      <!-- <div class="container mt-5">
-        <div class="ms-2">
-          <h3><b>Search for a Product:</b/h3>
-            <div class="mt-3">
-              <div>
-                <div class="select mb-3">
-                  <select class="is-hovered">
-                    <option>Select a Product Category</option>
-                    <option>With options</option>
-                  </select>
-                </div> -->
-
-                <!-- SEARCH BAR AND BUTTON -->
-                
-                <div class="container">
-                  <div class="columns is-mobile is-centered">
-                <div class="level-items">
-                  <div class="field has-addons">
-                  <p class="control">
-                  <input id="searchForProductInput" class="input" type="text" placeholder="Medium input">
-                  </p>
-              
-                  <p class="control">
-                  <button id="rando-btn" class="button is-info">Search</button>
-                </p>
-              </div>
-            </div>
-          </div>
-          </div>
-          <!-- Results from search -->
-          <!-- CARDS WILL BE VISIBLE AFTER SEARCH BUTTON CLICK -->
-          <div id="results"class="card is-hidden">
-              <div class="card-image">
-                <figure class="image is-4by3">
-                  <img src="https://versions.bulma.io/0.7.2/images/placeholders/1280x960.png" alt="Placeholder image">
-                </figure>
-              </div>
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-left">
-                    <figure class="image is-48x48">
-                      <img src="https://versions.bulma.io/0.7.2/images/placeholders/96x96.png" alt="Placeholder image">
-                    </figure>
-                  </div>
-                  <div class="media-content">
-                    <p class="title is-4">John Smith</p>
-                    <p class="subtitle is-6">@johnsmith</p>
-                  </div>
-                </div>
-            
-                <div class="content">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                  <a href="#">#css</a> <a href="#">#responsive</a>
-                  <br>
-        
-                </div>
-              </div>
-            </div>
-          <!-- SEARCH HISTORY WILL BE SAVED IN LOCAL STORAGE  -->
-         
-
-                <h1 id="bitcoin-Price"></h1>
-              </div>
-            </div>
-            <hr/>
-            <ul id="list-SearchHistory" class="mt-4">
-              </ul>
-              
-              <!-- Footer -->
-              <footer class="footer">
-                <div class="content has-text-centered">
-                  <p>
-                    <!-- Work on footer info...social links, crypto links?? -->
-                    Coding Brigaders © 2022 All Rights Reserved. 
-                    </p>
-                </div>
-              </footer>
-              
-    
+    </footer>
     <script src="./assets/vendor/jquery/jquery-3.6.0.min.js"></script>
     <script src="./assets/vendor/moment/moment-with-locales.min.js"></script>
+    <script src="./assets/js/response.js"></script>
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
