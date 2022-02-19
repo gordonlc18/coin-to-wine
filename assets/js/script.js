@@ -42,15 +42,10 @@ $(function () {
     var x = document.getElementById("productCard");
     if (x.classList.contains("is-hidden")) {
       x.classList.remove("is-hidden");
-<<<<<<< HEAD
     // } else {
     //   x.classList.add("is-hidden");
      }
   
-=======
-      // console.log("it has it")
-    }
->>>>>>> 6b8dedc7e2ccc0b860a6b9128bb996ca73919c85
   });
   //Showing Modal instead of alert and dynamically populating error message
   function showModalError(msg, title = "Error", srcPath = errorImgPath) {
@@ -134,9 +129,9 @@ $(function () {
         return response.json();
       })
       .then(function (data) {
-        // console.log(data);
+        console.log(data);
         cryptoPrice = data[selectedCrypto]["usd"];
-        // console.log(cryptoPrice);
+        console.log(cryptoPrice);
       });
   }
 
@@ -230,11 +225,11 @@ $(function () {
     var name = item.name;
     var BTC = convertUSDTOBTC(item.price);
     var label = cryptoLables.get(selectedCrypto);
-    // console.log("Name: " + name);
-    // console.log("Price: " + price);
-    // console.log("Image: " + image);
-    // console.log("BTC: " + BTC);
-    // console.log(item);
+    console.log("Name: " + name);
+    console.log("Price: " + price);
+    console.log("Image: " + image);
+    console.log("BTC: " + BTC);
+    console.log(item);
 
     var productCard = `
     <article class="card-item col-4 mb-2">
@@ -300,11 +295,8 @@ $(function () {
     var x = document.getElementById("productCard");
     if (x.classList.contains("is-hidden")) {
       x.classList.remove("is-hidden");
-<<<<<<< HEAD
     // } else {
     //   x.classList.add("is-hidden");`
-=======
->>>>>>> 6b8dedc7e2ccc0b860a6b9128bb996ca73919c85
     }
     if (product) {
       getProducts(product);
