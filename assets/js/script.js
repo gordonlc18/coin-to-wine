@@ -37,15 +37,7 @@ $(function () {
   $(".modal-card-head button").on("click", function () {
     $(".modal").removeClass("is-active");
   });
-  // HIDES PRODUCT GALLERY DIV UNTIL SEARCH BUTTON IS CLICKED-LG
-  document.getElementById("rando-btn").addEventListener("click", (e) => {
-    var x = document.getElementById("productCard");
-    if (x.classList.contains("is-hidden")) {
-      x.classList.remove("is-hidden");
-      // } else {
-      //   x.classList.add("is-hidden");
-    }
-  });
+
   //Showing Modal instead of alert and dynamically populating error message
   function showModalError(msg, title = "Error", srcPath = errorImgPath) {
     $(".modal-card-title").text(title);
@@ -289,12 +281,7 @@ $(function () {
   $("#list-SearchHistory").on("click", "button", function () {
     // get button name value attribute
     var product = $(this).attr("name");
-    var x = document.getElementById("productCard");
-    if (x.classList.contains("is-hidden")) {
-      x.classList.remove("is-hidden");
-      // } else {
-      //   x.classList.add("is-hidden");`
-    }
+
     if (product) {
       getProducts(product);
     }
@@ -309,10 +296,12 @@ $(function () {
 
   // https://dev.to/wangonya/displaying-a-css-spinner-on-ajax-calls-with-fetch-api-4ndo
   function showSpinner() {
+    $("#productCard").addClass("is-hidden");
     $("#spinner").addClass("show");
   }
 
   function hideSpinner() {
+    $("#productCard").removeClass("is-hidden");
     $("#spinner").removeClass("show");
   }
 
