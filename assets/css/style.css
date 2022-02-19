@@ -67,26 +67,9 @@ button {
 
 /* mobile responsive */
 @media (max-width: 600px) {
-  .input.small {
-    font-size: 0.7rem;
-  }
-
   h2.small {
     font-size: 0.7rem;
   }
-
-  .button.small {
-    font-size: 0.7rem;
-  }
-
-  .select.small {
-    border-radius: 2px;
-    font-size: 0.6rem;
-  }
-  .label {
-    font-size: 0.6rem;
-  }
-
   .col-sm-11 {
     width: 91.66%;
   }
@@ -104,6 +87,10 @@ button {
   }
   .solana {
     width: 13% !important;
+  }
+  .grid-container {
+    display: flex;
+    flex-direction: column !important;
   }
 }
 
@@ -148,9 +135,9 @@ button {
 }
 
 .grid-container {
-  display: grid;
-  grid-template-areas: "search search gallery gallery gallery gallery";
-  grid-gap: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
   padding: 15px;
 }
 .navbar {
