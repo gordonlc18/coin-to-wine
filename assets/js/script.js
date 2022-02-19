@@ -37,15 +37,20 @@ $(function () {
   $(".modal-card-head button").on("click", function () {
     $(".modal").removeClass("is-active");
   });
-// HIDES PRODUCT GALLERY DIV UNTIL SEARCH BUTTON IS CLICKED-LG
+  // HIDES PRODUCT GALLERY DIV UNTIL SEARCH BUTTON IS CLICKED-LG
   document.getElementById("rando-btn").addEventListener("click", (e) => {
     var x = document.getElementById("productCard");
     if (x.classList.contains("is-hidden")) {
       x.classList.remove("is-hidden");
+<<<<<<< HEAD
     // } else {
     //   x.classList.add("is-hidden");
      }
   
+=======
+      // console.log("it has it")
+    }
+>>>>>>> 6b8dedc7e2ccc0b860a6b9128bb996ca73919c85
   });
   //Showing Modal instead of alert and dynamically populating error message
   function showModalError(msg, title = "Error", srcPath = errorImgPath) {
@@ -288,15 +293,18 @@ $(function () {
   }
 
   // When the user clicks on a button in search history list fetch products from past search history(Make another api call)
-//  Added function inside this code to allow history list to populate not that product gallery div is hidden-LG
+  //  Added function inside this code to allow history list to populate not that product gallery div is hidden-LG
   $("#list-SearchHistory").on("click", "button", function () {
     // get button name value attribute
     var product = $(this).attr("name");
     var x = document.getElementById("productCard");
     if (x.classList.contains("is-hidden")) {
       x.classList.remove("is-hidden");
+<<<<<<< HEAD
     // } else {
     //   x.classList.add("is-hidden");`
+=======
+>>>>>>> 6b8dedc7e2ccc0b860a6b9128bb996ca73919c85
     }
     if (product) {
       getProducts(product);
