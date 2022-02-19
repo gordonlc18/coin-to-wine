@@ -9,7 +9,7 @@ body > footer {
   margin-top: auto;
 }
 /* USED TO TARGET IS-HIDDEN CLASSLIST IN JS TO HIDE PRODCT CARD-LG */
-.hide{
+.hide {
   display: none;
 }
 /* No Boostrap was used in the making of this project just a little css grid, bulma and alot of flexbox  */
@@ -162,6 +162,12 @@ button {
   background-color: rgb(241, 237, 237);
 }
 
+#list-SearchHistory {
+  display: flex;
+  flex-direction: row;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
 .searches button {
   font-size: 75%;
 }

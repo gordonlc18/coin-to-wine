@@ -273,8 +273,7 @@ $(function () {
   }
   function displaySearchHistory(product) {
     // Append search history items to list here
-    var listItem = $("<li>").addClass("searches mb-3");
-    var div = $("<div>").addClass("");
+    var div = $("<div>").addClass("searches mb-2");
     var button = $("<button>")
       .addClass(" button is-responsive is-link has-text-weight-bold")
       .attr("type", "button")
@@ -282,9 +281,8 @@ $(function () {
       .text(product);
 
     div.append(button);
-    listItem.append(div);
 
-    $("#list-SearchHistory").prepend(listItem);
+    $("#list-SearchHistory").prepend(div);
   }
 
   // When the user clicks on a button in search history list fetch products from past search history(Make another api call)
@@ -299,6 +297,13 @@ $(function () {
     if (product) {
       getProducts(product);
     }
+  });
+
+  $("#clear").on("click", function () {
+    emptySearchHistoryContainer();
+    searchHistory = [];
+    saveSearchHistory();
+    loadProductSearches();
   });
 
   // https://dev.to/wangonya/displaying-a-css-spinner-on-ajax-calls-with-fetch-api-4ndo
