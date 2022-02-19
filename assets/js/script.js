@@ -37,7 +37,7 @@ $(function () {
   $(".modal-card-head button").on("click", function () {
     $(".modal").removeClass("is-active");
   });
-// HIDES PRODUCT GALLERY DIV UNTIL SEARCH BUTTON IS CLICKED-LG
+  // HIDES PRODUCT GALLERY DIV UNTIL SEARCH BUTTON IS CLICKED-LG
   document.getElementById("rando-btn").addEventListener("click", (e) => {
     var x = document.getElementById("productCard");
     // console.log(x.classList);
@@ -45,10 +45,7 @@ $(function () {
       // x.style.display = "block";
       x.classList.remove("is-hidden");
       // console.log("it has it")
-    } else {
-      x.classList.add("is-hidden");
     }
-  
   });
   //Showing Modal instead of alert and dynamically populating error message
   function showModalError(msg, title = "Error", srcPath = errorImgPath) {
@@ -291,15 +288,13 @@ $(function () {
   }
 
   // When the user clicks on a button in search history list fetch products from past search history(Make another api call)
-//  Added function inside this code to allow history list to populate not that product gallery div is hidden-LG
+  //  Added function inside this code to allow history list to populate not that product gallery div is hidden-LG
   $("#list-SearchHistory").on("click", "button", function () {
     // get button name value attribute
     var product = $(this).attr("name");
     var x = document.getElementById("productCard");
     if (x.classList.contains("is-hidden")) {
       x.classList.remove("is-hidden");
-    } else {
-      x.classList.add("is-hidden");
     }
     if (product) {
       getProducts(product);
